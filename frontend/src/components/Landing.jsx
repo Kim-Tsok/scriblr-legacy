@@ -14,7 +14,7 @@ const Landing = () => {
 
         <div className="flex">
           <Link
-            to={"/discover"}
+            to="/discover"
             className="bg-white w-[90px] h-[40px] text-blue-800 font-semibold m-2 flex items-center justify-center"
           >
             Login

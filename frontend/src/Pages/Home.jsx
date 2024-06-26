@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Landing from "../components/Landing";
+import About from "./About";
 
 const home = () => {
   return (
@@ -7,6 +8,7 @@ const home = () => {
       <div className="font-mono">
         <Navbar />
         <Landing />
+        <About />
       </div>
     </>
   );
