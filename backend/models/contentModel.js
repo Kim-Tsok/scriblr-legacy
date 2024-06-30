@@ -12,6 +12,10 @@ const contentSchema = new Schema(
       type: String,
       required: true,
     },
+    cover: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );

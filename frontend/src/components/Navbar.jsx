@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "/logowhite.svg";
 
 const Navbar = () => {
@@ -19,7 +20,7 @@ const Navbar = () => {
             <a href="#">faq</a>
           </i>
           <i className="px-[10px] py-[5px] rounded-xl border-white border-2 mx-2">
-            <a href="#">Join</a>
+            <Link to="/discover">Test</Link>
           </i>
         </ul>
       </div>
