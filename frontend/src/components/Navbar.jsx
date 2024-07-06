@@ -20,7 +20,7 @@ const Navbar = () => {
             <a href="#">faq</a>
           </i>
           <i className="px-[10px] py-[5px] rounded-xl border-white border-2 mx-2">
-            <Link to="/discover">Test</Link>
+            <Link>Join</Link>
           </i>
         </ul>
       </div>

@@ -15,10 +15,10 @@ const Landing = () => {
 
         <div className="flex">
           <Link
-            to="/discover"
-            className="bg-white w-[90px] h-[40px] text-blue-800 font-semibold m-2 flex items-center justify-center"
+            // to="/discover"
+            className="bg-white py-2 px-4 text-blue-800 font-semibold m-2 flex items-center justify-center"
           >
-            Test
+            Join Waitlist
           </Link>
           {/* <a
             href="#"
