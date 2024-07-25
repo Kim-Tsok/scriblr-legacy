@@ -1,6 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
-import logo from "/logowhite.svg";
 
 const ContentForm = () => {
   const [title, setTitle] = useState("");
@@ -97,7 +95,7 @@ const ContentForm = () => {
           <div className="w-full flex items-center justify-center"></div>
         </div>
         <div
-          className="w-screen h-screen fixed p-4 flex-col bg-white hidden"
+          className="w-screen h-screen fixed p-4 px-[20rem] flex-col bg-white hidden"
           id="main"
         >
           <textarea
@@ -121,16 +119,3 @@ const ContentForm = () => {
 };
 
 export default ContentForm;
-
-function convertToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-}

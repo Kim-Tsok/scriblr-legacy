@@ -26,12 +26,10 @@ const getContent = async (req, res) => {
 
 // create new content
 const createContent = async (req, res) => {
-  const { title, about, cover } = req.body;
+  const { title, about } = req.body;
 
   // add to db
   try {
-    const content = await Content.create({ title, about, cover });
-    newImage.save();
     res.status(200).json(content);
   } catch (error) {
     res.status(400).json({ error: error.message });

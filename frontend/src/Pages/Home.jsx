@@ -8,7 +8,6 @@ const home = () => {
       <div className="font-mono">
         <Navbar />
         <Landing />
-        <About />
       </div>
     </>
   );

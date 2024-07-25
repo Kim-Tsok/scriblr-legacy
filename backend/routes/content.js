@@ -9,18 +9,18 @@ const {
 
 const router = express.Router();
 const mongoose = require("mongoose");
-// GET all workouts
+// GET all contents
 router.get("/", getContents);
 
-// GET a single workout
+// GET a single content
 router.get("/:id", getContent);
 
-// POST a new workout
+// POST a new content
 router.post("/", createContent);
 
-// DELETE a new workout
+// DELETE a new content
 router.delete("/:id", deleteContent);
 
-// UPDATE a new workout
+// UPDATE a new content
 router.patch("/:id", updateContent);
 module.exports = router;

@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const contentRoutes = require("./routes/content");
+const emailRoutes = require("./routes/email");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use("/api/contents", contentRoutes);
+app.use("/api/emails", emailRoutes);
 
 // // connect to db
 mongoose
