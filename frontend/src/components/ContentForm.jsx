@@ -1,11 +1,42 @@
 import { useState } from "react";
+import { useContentsContext } from "../hooks/useContentContext";
+import axios from "axios";
 
 const ContentForm = () => {
+  const { dispatch } = useContentsContext();
   const [title, setTitle] = useState("");
   const [about, setAbout] = useState("");
+  const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmitImage = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("about", about);
+    formData.append("image", image);
+
+    try {
+      const response = await axios.post("/api/content", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      console.log("Content added:", response.data);
+      // Handle successful upload
+    } catch (error) {
+      console.error("Error uploading content:", error);
+      setError(error.message);
+    }
+  };
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleSubmit = async () => {
     // e.preventDefault();
     document.getElementById("form").style.display = "none";
 
@@ -27,6 +58,7 @@ const ContentForm = () => {
       setAbout("");
       setError(null);
       console.log("New book added", json);
+      dispatch({ type: "CREATE_CONTENTS", payload: json });
     }
   };
 
@@ -34,6 +66,7 @@ const ContentForm = () => {
     document.getElementById("form").style.display = "none";
   };
   const handleOpenNew = () => {
+    event.preventDefault();
     document.getElementById("main").style.display = "flex";
   };
 
@@ -82,6 +115,7 @@ const ContentForm = () => {
             className="outline-none border-2 border-gray-500 rounded-md p-1 px-2 font-serif resize-none"
           />
 
+          <input type="file" onChange={handleImageChange} />
           <label className="text-right text-sm text-gray-500 mb-4">0/450</label>
           <div className="w-full flex items-center justify-center">
             <button
@@ -107,6 +141,7 @@ const ContentForm = () => {
           <div className="w-full flex items-center justify-center">
             <button
               type="submit"
+              onClick={handleSubmit}
               className="mt-4 px-3 py-2 bg-blue-800 text-white"
             >
               Submit

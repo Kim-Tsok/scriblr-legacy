@@ -25,7 +25,19 @@ const WaitlistForm = () => {
       setEmail("");
       setError(null);
       console.log("New user added", json);
+      ShowSuccessMessage();
     }
+  };
+
+  const ShowSuccessMessage = () => {
+    var successMessage = document.getElementById("successMessage");
+    successMessage.style.opacity = "100";
+    successMessage.style.transition = "2s";
+    successMessage.style.bottom = "150px";
+    setTimeout(() => {
+      successMessage.style.bottom = "-200px";
+      successMessage.style.opacity = "0";
+    }, 5000);
   };
   return (
     <>
@@ -51,6 +63,12 @@ const WaitlistForm = () => {
           </div>
         </button>
       </form>
+      <div
+        id="successMessage"
+        className="px-4 py-2 bg-gradient-to-b from-green-500 to-green-700 text-white absolute bottom-0 right-[40%] left-[40%] z-20 text-center transition-all opacity-0"
+      >
+        Email sent successfully
+      </div>
     </>
   );
 };

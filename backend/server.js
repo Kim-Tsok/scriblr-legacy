@@ -5,11 +5,16 @@ const contentRoutes = require("./routes/content");
 const emailRoutes = require("./routes/email");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const fileUpload = require("express-fileupload"); // Ensure correct import
 
 const app = express();
 
 // middleware
 app.use(express.json({ limit: "50mb" }));
+app.use(fileUpload({ useTempFiles: true }));
 app.use(express.urlencoded({ extended: false, limit: "50mb" }));
 
 app.use(
@@ -18,7 +23,7 @@ app.use(
     methods: ["GET", "POST", "DELETE", "PATCH"],
   })
 );
-app.use(express.json());
+
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
@@ -28,7 +33,14 @@ app.use((req, res, next) => {
 app.use("/api/contents", contentRoutes);
 app.use("/api/emails", emailRoutes);
 
-// // connect to db
+// Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.CLOUDINARY_URL,
+});
+
+// connect to db
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
@@ -38,5 +50,5 @@ mongoose
     });
   })
   .catch((error) => {
-    console.log(error);
+    console.error("Database connection error:", error);
   });

@@ -1,4 +1,7 @@
 const express = require("express");
+const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const {
   getContents,
   getContent,
@@ -15,8 +18,22 @@ router.get("/", getContents);
 // GET a single content
 router.get("/:id", getContent);
 
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "uploads", // Create a folder in Cloudinary
+    format: async (req, file) => extname(file.originalname),
+    public_id: (req, file) => {
+      const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+      return file.originalname.split(".")[0] + "_" + uniqueSuffix;
+    },
+  },
+});
+
+const upload = multer({ storage });
+
 // POST a new content
-router.post("/", createContent);
+router.post("/", upload.single("image"), createContent);
 
 // DELETE a new content
 router.delete("/:id", deleteContent);

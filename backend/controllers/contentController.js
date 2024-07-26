@@ -30,6 +30,8 @@ const createContent = async (req, res) => {
 
   // add to db
   try {
+    const content = await Content.create({ title, about });
+    const imageUrl = req.file.path;
     res.status(200).json(content);
   } catch (error) {
     res.status(400).json({ error: error.message });

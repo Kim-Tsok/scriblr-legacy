@@ -35,13 +35,16 @@ const Landing = () => {
           </a> */}
         </div>
         <footer className="absolute bottom-0 pb-5 flex">
-          <a href="https://instagram.com/Komma01" className="  mx-3">
+          <a href="https://instagram.com/komma__01/" className="  mx-3">
             <img src={instagram} alt="" className="h-8" />
           </a>
-          <a href="https://x.com/Komma01" className="mx-3">
+          <a href="https://x.com/Komma_01" className="mx-3">
             <img src={twitter} alt="" className="h-8" />
           </a>
-          <a href="https://linkedin.com/Komma01" className="mx-3">
+          <a
+            href="https://linkedin.com/in/kim-tsok-5b6b82261/"
+            className="mx-3"
+          >
             <img src={linkedin} alt="" className="h-8" />
           </a>
         </footer>

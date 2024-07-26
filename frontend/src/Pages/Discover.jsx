@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { useContentsContext } from "../hooks/useContentContext";
 import Book from "../components/Book";
 import ContentForm from "../components/ContentForm";
 
 const Discover = () => {
-  const [contents, setContents] = useState(null);
+  const { contents, dispatch } = useContentsContext();
 
   useEffect(() => {
     const fetchContents = async () => {
@@ -11,7 +12,7 @@ const Discover = () => {
       const json = await response.json();
 
       if (response.ok) {
-        setContents(json);
+        dispatch({ type: "SET_CONTENTS", payload: json });
       }
     };
 
