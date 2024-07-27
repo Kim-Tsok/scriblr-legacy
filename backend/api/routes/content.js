@@ -1,13 +1,11 @@
 const express = require("express");
-const multer = require("multer");
-const cloudinary = require("cloudinary").v2;
 const {
   getContents,
   getContent,
   createContent,
   deleteContent,
   updateContent,
-} = require("./controllers/contentController");
+} = require("../controllers/contentController");
 
 const router = express.Router();
 const mongoose = require("mongoose");
