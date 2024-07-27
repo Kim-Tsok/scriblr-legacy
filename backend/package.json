@@ -117,8 +117,8 @@
   },
   "scripts": {
     "test": "start",
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",

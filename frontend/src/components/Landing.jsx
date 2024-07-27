@@ -35,17 +35,17 @@ const Landing = () => {
           </a> */}
         </div>
         <footer className="absolute bottom-0 pb-5 flex">
-          <a href="https://instagram.com/komma__01/" className="  mx-3">
-            <img src={instagram} alt="" className="h-8" />
+          <a href="https://instagram.com/komma__01/" className="mx-3">
+            <img src={instagram} alt="" className="h-7 max-md:h-6" />
           </a>
           <a href="https://x.com/Komma_01" className="mx-3">
-            <img src={twitter} alt="" className="h-8" />
+            <img src={twitter} alt="" className="h-7 max-md:h-6" />
           </a>
           <a
             href="https://linkedin.com/in/kim-tsok-5b6b82261/"
             className="mx-3"
           >
-            <img src={linkedin} alt="" className="h-8" />
+            <img src={linkedin} alt="" className="h-7 max-md:h-6" />
           </a>
         </footer>
       </div>
