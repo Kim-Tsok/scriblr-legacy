@@ -2,19 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "./api1/index.js",
+      "src": "./api/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/emails",
-      "dest": "./api1/controllers/emailController.js",
+      "dest": "./api/controllers/emailController.js",
       "methods": ["GET", "POST"]
     },
     {
       "src": "/api/contents",
-      "dest": "./api1/controllers/contentController.js",
+      "dest": "./api/controllers/contentController.js",
       "methods": ["GET", "POST", "UPDATE"]
     }
   ]
