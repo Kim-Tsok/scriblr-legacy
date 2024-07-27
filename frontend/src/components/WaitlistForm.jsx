@@ -10,10 +10,8 @@ const WaitlistForm = () => {
 
     const waitlist = { email };
     const response = await fetch(
-      [
-        "http://localhost:5174/api/emails",
-        "https://scriblr-server-ib1e4igwa-kims-projects-40c9f813.vercel.app/api",
-      ],
+      "https://scriblr-server-ib1e4igwa-kims-projects-40c9f813.vercel.app/api",
+
       {
         method: "POST",
         body: JSON.stringify(waitlist),
