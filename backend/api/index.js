@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: false, limit: "50mb" }));
 
 app.use(
   cors({
-    origin: "https://scriblr.vercel.app",
+    origin: ["http://localhost:5173", "https://scriblr.vercel.app"],
     methods: ["GET", "POST", "DELETE", "PATCH"],
   })
 );

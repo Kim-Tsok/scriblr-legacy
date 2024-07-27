@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:5174",
+  "proxy": "https://scriblr-server-ib1e4igwa-kims-projects-40c9f813.vercel.app/api",
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
