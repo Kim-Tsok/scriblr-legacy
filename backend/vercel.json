@@ -13,7 +13,7 @@
       "methods": ["GET", "POST"]
     },
     {
-      "src": "/api/emails",
+      "src": "/api/contents",
       "dest": "/api/controllers/contentController.js",
       "methods": ["GET", "POST", "UPDATE"]
     }
