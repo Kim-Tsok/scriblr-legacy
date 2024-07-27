@@ -5,7 +5,7 @@ const {
   createContent,
   deleteContent,
   updateContent,
-} = require("../controllers/contentController");
+} = require("../contentController");
 
 const router = express.Router();
 const mongoose = require("mongoose");

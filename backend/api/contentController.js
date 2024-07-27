@@ -1,4 +1,4 @@
-const Content = require("../models/contentModel");
+const Content = require("./models/contentModel");
 const mongoose = require("mongoose");
 
 //get all content
