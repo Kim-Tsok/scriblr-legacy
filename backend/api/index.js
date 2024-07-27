@@ -1,8 +1,8 @@
 require("dotenv").config();
 
 const express = require("express");
-const contentRoutes = require("../routes/content");
-const emailRoutes = require("../routes/email");
+const contentRoutes = require("./routes/content");
+const emailRoutes = require("./routes/email");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cloudinary = require("cloudinary").v2;
