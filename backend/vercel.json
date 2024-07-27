@@ -9,12 +9,12 @@
   "routes": [
     {
       "src": "/api/emails",
-      "dest": "/api/routes/email.js",
+      "dest": "/controllers/email.js",
       "methods": ["GET", "POST"]
     },
     {
       "src": "/api/contents",
-      "dest": "/api/routes/content.js",
+      "dest": "/controllers/content.js",
       "methods": ["GET", "POST", "UPDATE"]
     }
   ]
