@@ -5,9 +5,7 @@ const contentRoutes = require("../routes/content");
 const emailRoutes = require("../routes/email");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const multer = require("multer");
 const cloudinary = require("cloudinary").v2;
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const fileUpload = require("express-fileupload"); // Ensure correct import
 
 const app = express();
