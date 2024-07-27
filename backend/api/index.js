@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use("/api", contentRoutes);
+app.use("/api/contents", contentRoutes);
 app.use("/api/emails", emailRoutes);
 
 // Cloudinary
