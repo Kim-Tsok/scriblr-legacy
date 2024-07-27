@@ -1,15 +1,15 @@
-const Email = require("./models/emailModel");
+const Email = require("../models/emailModel");
 const mongoose = require("mongoose");
 
 //get all emails
-export const getEmails = async (req, res) => {
+const getEmails = async (req, res) => {
   const emails = await Email.find({}).sort({ createdAt: -1 });
 
   res.status(200).json(emails);
 };
 
 // create new email
-export const createEmail = async (req, res) => {
+const createEmail = async (req, res) => {
   const { email } = req.body;
 
   // add to db

@@ -8,8 +8,14 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/"
+      "src": "/api/emails",
+      "dest": "/api/controller/emailController.js",
+      "methods": ["GET", "POST"]
+    },
+    {
+      "src": "/api/emails",
+      "dest": "/api/controllers/contentController.js",
+      "methods": ["GET", "POST", "UPDATE"]
     }
   ]
 }
