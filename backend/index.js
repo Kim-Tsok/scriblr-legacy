@@ -22,6 +22,8 @@ app.use(
   })
 );
 
+res.setHeader("Access-Control-Allow-Origin", "https://scriblr.vercel.app");
+
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
