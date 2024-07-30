@@ -7,12 +7,15 @@ const getEmails = async (req, res) => {
 
   res.status(200).json(emails);
 };
-
-// create new email
 const createEmail = async (req, res) => {
   const { email } = req.body;
 
-  // add to db
+  // Basic email validation (consider using a more robust validation library)
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ error: "Invalid email format" });
+  }
+
   try {
     const waitlist = await Email.create({ email });
     res.status(200).json(waitlist);
