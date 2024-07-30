@@ -9,7 +9,9 @@ const cors = require("cors");
 const app = express();
 
 // middleware
-
+// routes
+app.use("/api/contents", contentRoutes);
+app.use("/api/emails", emailRoutes);
 app.use(
   cors({
     origin: "https://scriblr.vercel.app",
@@ -21,10 +23,6 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
-
-// routes
-app.use("/api/contents", contentRoutes);
-app.use("/api/emails", emailRoutes);
 
 // connect to db
 mongoose
