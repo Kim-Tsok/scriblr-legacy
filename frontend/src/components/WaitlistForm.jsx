@@ -5,7 +5,8 @@ const WaitlistForm = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [error, setError] = useState(null);
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5174";
+  const API_URL =
+    import.meta.env.VITE_API_URL || "https://scriblr-backend.onrender.com";
 
   const waitlist = { email, name };
   const handleSubmit = async (e) => {
