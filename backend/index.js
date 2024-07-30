@@ -19,6 +19,7 @@ app.use(
   cors({
     origin: "https://scriblr.vercel.app",
     methods: ["GET", "POST", "DELETE", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
