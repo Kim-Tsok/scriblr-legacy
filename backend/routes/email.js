@@ -1,12 +1,13 @@
 const express = require("express");
+const cors = require("cors");
 const { createEmail, getEmails } = require("../controllers/emailController");
 
 const router = express.Router();
 const mongoose = require("mongoose");
 
 // GET all emails
-router.get("/", getEmails);
+router.get("/", cors(), getEmails);
 // POST a new email
-router.post("/", createEmail);
+router.post("/", cors(), createEmail);
 
 module.exports = router;

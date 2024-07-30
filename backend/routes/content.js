@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const {
   getContents,
   getContent,
@@ -9,13 +10,13 @@ const {
 
 const router = express.Router();
 // GET all contents
-router.get("/", getContents);
+router.get("/", cors(), getContents);
 
 // GET a single content
-router.get("/:id", getContent);
+router.get("/:id", cors(), getContent);
 
 // POST a new content
-router.post("/", createContent);
+router.post("/", cors(), createContent);
 
 // DELETE a new content
 router.delete("/:id", deleteContent);

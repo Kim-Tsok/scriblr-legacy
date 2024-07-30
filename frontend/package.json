@@ -1,5 +1,4 @@
 {
-  "proxy": "https://scriblr-server-ib1e4igwa-kims-projects-40c9f813.vercel.app/api",
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
@@ -10,6 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "proxy": "https://scriblr-backend.onrender.com",
   "dependencies": {
     "appwrite": "^15.0.0",
     "axios": "^1.7.2",

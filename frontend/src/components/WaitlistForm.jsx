@@ -9,16 +9,13 @@ const WaitlistForm = () => {
     e.preventDefault();
 
     const waitlist = { email };
-    const response = await fetch(
-      "https://scriblr-backend.onrender.com/api/emails",
-      {
-        method: "POST",
-        body: JSON.stringify(waitlist),
-        headers: {
-          "Content-Type": "application/Json",
-        },
-      }
-    );
+    const response = await fetch("/api/emails", {
+      method: "POST",
+      body: JSON.stringify(waitlist),
+      headers: {
+        "Content-Type": "application/Json",
+      },
+    });
     const json = await response.json();
 
     if (!response.ok) {
@@ -64,7 +61,7 @@ const WaitlistForm = () => {
           required
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email address"
-          className="p-2 w-[35%] h-[2.5rem] border-2 border-gray-500 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-white"
+          className="p-2 w-[35%] h-[2.5rem] border-2 border-gray-500 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-white rounded-md"
         />
         <div
           id="errorMessage"

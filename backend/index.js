@@ -25,7 +25,6 @@ app.use(
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);
-  res.setHeader("Access-Control-Allow-Origin", "https://scriblr.vercel.app");
   res.setHeader("Access-Control-Allow-Methods", [
     "GET",
     "POST",

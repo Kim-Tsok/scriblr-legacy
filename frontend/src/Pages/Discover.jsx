@@ -9,7 +9,9 @@ const Discover = () => {
 
   useEffect(() => {
     const fetchContents = async () => {
-      const response = await fetch("http://localhost:5174/api/contents");
+      const response = await fetch(
+        "https://scriblr-backend.onrender.com/api/contents"
+      );
       const json = await response.json();
 
       if (response.ok) {
