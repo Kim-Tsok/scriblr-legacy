@@ -11,6 +11,7 @@ const WaitlistForm = () => {
     const waitlist = { email };
     const response = await fetch("https://scriblr-backend.onrender.com/api/emails", {
       method: "POST",
+      mode: 'no-cors'
       body: JSON.stringify(waitlist),
       headers: {
         "Content-Type": "application/Json",
