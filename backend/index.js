@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const bodyParser = require("body-parser");
 const contentRoutes = require("./routes/content");
 const emailRoutes = require("./routes/email");
 const mongoose = require("mongoose");
@@ -12,6 +13,7 @@ const app = express();
 // routes
 app.use("/api/contents", contentRoutes);
 app.use("/api/emails", emailRoutes);
+app.use(bodyParser.json());
 app.use(
   cors({
     origin: "https://scriblr.vercel.app",
