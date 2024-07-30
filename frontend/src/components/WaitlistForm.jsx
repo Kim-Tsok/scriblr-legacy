@@ -9,14 +9,16 @@ const WaitlistForm = () => {
     e.preventDefault();
 
     const waitlist = { email };
-    const response = await fetch("https://scriblr-backend.onrender.com/api/emails", {
-      method: "POST",
-      mode: 'no-cors',
-      body: JSON.stringify(waitlist),
-      headers: {
-        "Content-Type": "application/Json",
-      },
-    });
+    const response = await fetch(
+      "https://scriblr-backend.onrender.com/api/emails",
+      {
+        method: "POST",
+        body: JSON.stringify(waitlist),
+        headers: {
+          "Content-Type": "application/Json",
+        },
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {
