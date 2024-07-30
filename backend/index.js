@@ -22,12 +22,15 @@ app.use(
   })
 );
 
-const corsMiddleware = (req, res, next) => {};
-
 app.use((req, res, next) => {
   console.log(req.path, req.method);
-  res.setHeader("Access-Control-Allow-Origin", corsOptions.origin);
-  res.setHeader("Access-Control-Allow-Methods", corsOptions.methods);
+  res.setHeader("Access-Control-Allow-Origin", "https://scriblr.vercel.app");
+  res.setHeader("Access-Control-Allow-Methods", [
+    "GET",
+    "POST",
+    "DELETE",
+    "PATCH",
+  ]);
   next();
 });
 
