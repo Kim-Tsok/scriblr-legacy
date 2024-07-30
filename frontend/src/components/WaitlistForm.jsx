@@ -9,7 +9,7 @@ const WaitlistForm = () => {
     e.preventDefault();
 
     const waitlist = { email };
-    const response = await fetch("http://localhost:5174/api/emails", {
+    const response = await fetch("https://scriblr-backend.onrender.com/api/emails", {
       method: "POST",
       body: JSON.stringify(waitlist),
       headers: {
