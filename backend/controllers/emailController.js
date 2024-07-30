@@ -14,8 +14,8 @@ const createEmail = async (req, res) => {
 
   // add to db
   try {
-    const waitlist = await Email.create({ email });
-    res.status(200).json(waitlist);
+    const email = await Email.create({ email });
+    res.status(200).json(email);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
