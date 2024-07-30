@@ -31,6 +31,7 @@ app.use((req, res, next) => {
     "DELETE",
     "PATCH",
   ]);
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
 
