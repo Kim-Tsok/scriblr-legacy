@@ -11,9 +11,10 @@ const app = express();
 
 // middleware
 // routes
+app.use(bodyParser.json());
 app.use("/api/contents", contentRoutes);
 app.use("/api/emails", emailRoutes);
-app.use(bodyParser.json());
+
 app.use(
   cors({
     origin: "https://scriblr.vercel.app",
