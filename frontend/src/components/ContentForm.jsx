@@ -28,7 +28,7 @@ const ContentForm = () => {
     document.getElementById("form").style.display = "none";
 
     const content = { title, about };
-    const response = await fetch("http://localhost:5174/api/contents", {
+    const response = await fetch("https://scriblr-backend.onrender.com/api/contents", {
       method: "POST",
       body: JSON.stringify(content),
       headers: {
