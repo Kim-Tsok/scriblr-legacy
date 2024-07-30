@@ -9,6 +9,7 @@ const {
 } = require("../controllers/contentController");
 
 const router = express.Router();
+router.use(cors());
 // GET all contents
 router.get("/", cors(), getContents);
 

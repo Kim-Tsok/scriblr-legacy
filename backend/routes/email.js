@@ -3,6 +3,7 @@ const cors = require("cors");
 const { createEmail, getEmails } = require("../controllers/emailController");
 
 const router = express.Router();
+router.use(cors());
 const mongoose = require("mongoose");
 
 // GET all emails

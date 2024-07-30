@@ -8,7 +8,7 @@ const getEmails = async (req, res) => {
   res.status(200).json(emails);
 };
 const createEmail = async (req, res) => {
-  const { email } = req.body;
+  const { email, name } = req.body;
 
   // Basic email validation (consider using a more robust validation library)
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -17,7 +17,7 @@ const createEmail = async (req, res) => {
   }
 
   try {
-    const waitlist = await Email.create({ email });
+    const waitlist = await Email.create({ email, name });
     res.status(200).json(waitlist);
   } catch (error) {
     res.status(400).json({ error: error.message });

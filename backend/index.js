@@ -9,39 +9,49 @@ const cors = require("cors");
 
 const app = express();
 
-// middleware
-// routes
-app.use(bodyParser.json());
-app.use("/api/contents", contentRoutes);
-app.use("/api/emails", emailRoutes);
+// CORS middleware (should be one of the first middleware)
+const allowedOrigins = ["https://scriblr.vercel.app", "http://localhost:5173"];
 
 app.use(
   cors({
-    origin: "https://scriblr.vercel.app",
-    methods: ["GET", "POST", "DELETE", "PATCH"],
+    origin: function (origin, callback) {
+      // allow requests with no origin
+      // (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        var msg =
+          "The CORS policy for this site does not " +
+          "allow access from the specified Origin.";
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+    methods: ["GET", "POST", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
 
+// Body parser middleware
+app.use(bodyParser.json());
+
+// Logging middleware
 app.use((req, res, next) => {
   console.log(req.path, req.method);
-  res.setHeader("Access-Control-Allow-Methods", [
-    "GET",
-    "POST",
-    "DELETE",
-    "PATCH",
-  ]);
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
 
-// connect to db
+// Routes
+app.use("/api/contents", contentRoutes);
+app.use("/api/emails", emailRoutes);
+
+// Connect to db
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    // listen for requests
+    // Listen for requests
     app.listen(process.env.PORT, () => {
-      console.log("connected to db & listening on port", process.env.PORT);
+      console.log("Connected to db & listening on port", process.env.PORT);
     });
   })
   .catch((error) => {

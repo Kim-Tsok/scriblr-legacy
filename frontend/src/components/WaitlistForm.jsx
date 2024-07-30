@@ -3,33 +3,39 @@ import { useState } from "react";
 
 const WaitlistForm = () => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [error, setError] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5174";
 
+  const waitlist = { email, name };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const waitlist = { email };
-    const response = await fetch(
-      "https://scriblr-backend.onrender.com/api/emails",
-      {
+    const waitlist = { email, name };
+    try {
+      const response = await fetch(`${API_URL}/api/emails`, {
         method: "POST",
         body: JSON.stringify(waitlist),
         headers: {
-          "Content-Type": "application/Json",
+          "Content-Type": "application/json",
         },
-      }
-    );
-    const json = await response.json();
+      });
 
-    if (!response.ok) {
-      setError(json.error);
-      ShowErrorMessage();
-    }
-    if (response.ok) {
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Network response was not ok");
+      }
+
+      const json = await response.json();
       setEmail("");
+      setName("");
       setError(null);
       console.log("New user added", json);
       ShowSuccessMessage();
+    } catch (error) {
+      console.error("Error:", error);
+      setError(error.message);
+      ShowErrorMessage();
     }
   };
 
@@ -45,6 +51,7 @@ const WaitlistForm = () => {
   };
   const ShowErrorMessage = () => {
     var errorMessage = document.getElementById("errorMessage");
+    errorMessage.textContent = error || "Sorry, email could not be sent";
     errorMessage.style.opacity = "100";
     errorMessage.style.transition = "0.5s";
     errorMessage.style.display = "block";
@@ -55,7 +62,20 @@ const WaitlistForm = () => {
   };
   return (
     <>
-      <form className="flex w-screen items-center justify-center text-black flex-col ">
+      <form
+        onSubmit={handleSubmit}
+        className="flex w-screen items-center justify-center text-black flex-col "
+      >
+        <input
+          type="name"
+          id="nameForm"
+          name="name"
+          value={name}
+          required
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Enter your full name"
+          className="p-2 m-5 w-[35%] h-[2.5rem] border-2 border-gray-500 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-white rounded-md"
+        />
         <input
           type="email"
           id="waitlistForm"
