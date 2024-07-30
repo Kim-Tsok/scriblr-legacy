@@ -5,7 +5,7 @@ const {
   createContent,
   deleteContent,
   updateContent,
-} = require("../controllers/contentController");
+} = require("./controllers/contentController");
 
 const router = express.Router();
 // GET all contents
