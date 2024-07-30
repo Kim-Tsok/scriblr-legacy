@@ -1,5 +1,7 @@
 const Content = require("../models/contentModel");
+const cloudinary = require("../cloudinary");
 const mongoose = require("mongoose");
+const { json } = require("body-parser");
 
 //get all content
 const getContents = async (req, res) => {
@@ -26,11 +28,26 @@ const getContent = async (req, res) => {
 
 // create new content
 const createContent = async (req, res) => {
-  const { title, about } = req.body;
+  const { title, about, image } = req.body;
 
   // add to db
   try {
-    const content = await Content.create({ title, about });
+    if (image) {
+      const uploadRes = await cloudinary.uploader.upload(image)({
+        upload_preset: "ml_default",
+      });
+
+      if (uploadRes) {
+        const content = new Content({
+          image: uploadRes,
+        });
+
+        const savedContent = await content.save();
+
+        req.status(200).send(savedContent);
+      }
+    }
+    const content = await Content.create({ title, about, image });
     res.status(200).json(content);
   } catch (error) {
     res.status(400).json({ error: error.message });

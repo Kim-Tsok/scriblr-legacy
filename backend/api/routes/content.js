@@ -8,7 +8,6 @@ const {
 } = require("../controllers/contentController");
 
 const router = express.Router();
-const mongoose = require("mongoose");
 // GET all contents
 router.get("/", getContents);
 

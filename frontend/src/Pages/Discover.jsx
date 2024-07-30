@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useContentsContext } from "../hooks/useContentContext";
 import Book from "../components/Book";
 import ContentForm from "../components/ContentForm";
+import Navbar from "../components/Navbar";
 
 const Discover = () => {
   const { contents, dispatch } = useContentsContext();
@@ -26,13 +27,14 @@ const Discover = () => {
   return (
     <>
       <div className="overflow-hidden">
-        <h1 className="m-4 text-center font-bold font-mono text-3xl text-blue-800">
+        <Navbar />;
+        <h1 className="m-4 text-center font-bold font-mono text-3xl text-blue-800 my-11">
           All Books
         </h1>
         <div className="w-screen flex items-center justify-center overflow-hidden relative">
           <ContentForm />
         </div>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-center items-center">
           {contents &&
             contents.map((content) => (
               <Book key={content._id} content={content} />

@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../components/WaitlistNavbar";
 import Landing from "../components/Landing";
 import About from "./About";
 
