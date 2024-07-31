@@ -5,10 +5,12 @@ import ContentForm from "../components/ContentForm";
 import Navbar from "../components/Navbar";
 
 const Discover = () => {
+  const [isLoading, setIsLoading] = useState("");
   const { contents, dispatch } = useContentsContext();
 
   useEffect(() => {
     const fetchContents = async () => {
+      setIsLoading(true);
       const response = await fetch(
         "https://scriblr-backend.onrender.com/api/contents"
       );
@@ -16,18 +18,31 @@ const Discover = () => {
 
       if (response.ok) {
         dispatch({ type: "SET_CONTENTS", payload: json });
+        setIsLoading(false);
       }
     };
 
     fetchContents();
   }, []);
 
+  if (!isLoading) {
+    const loader = document.getElementById("loader");
+    if (loader) {
+      loader.style.display = "none";
+    }
+  }
   const handleOpen = () => {
     document.getElementById("form").style.display = "flex";
   };
 
   return (
     <>
+      <div
+        id="loader"
+        className="w-screen h-screen flex justify-center items-center bg-white fixed z-[1]"
+      >
+        <div className="loader"></div>
+      </div>
       <div className="overflow-hidden">
         <Navbar />;
         <h1 className="m-4 text-center font-bold font-mono text-3xl text-blue-800 my-11">

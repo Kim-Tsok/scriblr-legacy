@@ -8,17 +8,12 @@ const WaitlistForm = () => {
   const [error, setError] = useState(null);
   const API_URL =
     import.meta.env.VITE_API_URL || "https://scriblr-backend.onrender.com";
-
+  const submitBtn = document.getElementById("submitFormBtn");
   const waitlist = { email, name };
+
   const handleSubmit = async (e) => {
-    if (isLoading) {
-      const submitBtn = document.getElementById("submitFormBtn");
-
-      submitBtn.textContent = "Loading...";
-      submitBtn.style.backgroundColor = "gray";
-    }
     e.preventDefault();
-
+    setIsLoading(true);
     const waitlist = { email, name };
     try {
       const response = await fetch(`${API_URL}/api/emails`, {
@@ -33,7 +28,6 @@ const WaitlistForm = () => {
         const errorData = await response.json();
         throw new Error(errorData.error || "Network response was not ok");
       }
-
       const json = await response.json();
       setEmail("");
       setName("");
@@ -48,23 +42,26 @@ const WaitlistForm = () => {
       ShowErrorMessage();
     }
   };
-
   const ShowSuccessMessage = () => {
     var submitBtn = document.getElementById("submitFormBtn");
     submitBtn.style.backgroundColor = "green";
     submitBtn.textContent = "Successful";
+    setIsLoading(true);
     setTimeout(() => {
       submitBtn.textContent = "Join";
       submitBtn.style.backgroundColor = "rgb(30 58 138)";
+      setIsLoading(false);
     }, 2300);
   };
   const ShowErrorMessage = () => {
     var submitBtn = document.getElementById("submitFormBtn");
     submitBtn.textContent = error || "Sorry, email could not be sent";
     submitBtn.style.backgroundColor = "red";
+    setIsLoading(true);
     setTimeout(() => {
       submitBtn.textContent = "Join";
       submitBtn.style.backgroundColor = "rgb(30 58 138)";
+      setIsLoading(false);
     }, 2300);
   };
   return (

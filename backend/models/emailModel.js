@@ -10,8 +10,8 @@ const emailSchema = new Schema(
     },
     email: {
       type: String,
-      required: true,
       unique: true,
+      required: true,
     },
   },
   { timestamps: true }

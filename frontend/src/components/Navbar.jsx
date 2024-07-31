@@ -4,7 +4,7 @@ import logo from "/logo.svg";
 
 const Navbar = () => {
   return (
-    <div className="w-screen h-[3.2rem] p-3 flex items-center justify-between px-9 max-sm:px-5 text-black border-b-2 border-zinc fixed bg-white">
+    <div className="w-screen h-[3.2rem] p-3 flex items-center justify-between px-9 max-sm:px-5 text-black border-b-2 border-zinc fixed bg-white z-10">
       <div className="flex items-center">
         <img src={logo} alt="logo" className="w-5 h-5 mx-1" />
         <h1 className="font-bold text-2xl">Scriblr</h1>

@@ -1,6 +1,22 @@
 const Email = require("../models/emailModel");
 const mongoose = require("mongoose");
 
+// get a single email
+const getEmail = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such item" });
+  }
+  const email = await Email.findById(id);
+
+  if (!email) {
+    return res.status(404).json({ error: "No such item" });
+  }
+
+  res.status(200).json(email);
+};
+
 //get all emails
 const getEmails = async (req, res) => {
   const emails = await Email.find({}).sort({ createdAt: -1 });
@@ -24,7 +40,26 @@ const createEmail = async (req, res) => {
   }
 };
 
+// delete a email
+const deleteEmail = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such item" });
+  }
+
+  const email = await Email.findOneAndDelete({ _id: id });
+
+  if (!email) {
+    return res.status(404).json({ error: "No such item" });
+  }
+
+  res.status(200).json(email);
+};
+
 module.exports = {
+  getEmail,
   getEmails,
   createEmail,
+  deleteEmail,
 };
