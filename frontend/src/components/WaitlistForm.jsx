@@ -52,7 +52,7 @@ const WaitlistForm = () => {
     var submitBtn = document.getElementById("submitFormBtn");
     submitBtn.style.backgroundColor = "green";
     setTimeout(() => {
-      submitBtn.textContent = "Join";
+      submitBtn.textContent = "Successful";
       submitBtn.style.backgroundColor = "rgb(30 58 138)";
     }, 2300);
   };
