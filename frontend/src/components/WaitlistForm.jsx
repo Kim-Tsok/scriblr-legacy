@@ -53,6 +53,7 @@ const WaitlistForm = () => {
     submitBtn.style.backgroundColor = "green";
     submitBtn.textContent = "Successful";
     setTimeout(() => {
+      submitBtn.textContent = "Join";
       submitBtn.style.backgroundColor = "rgb(30 58 138)";
     }, 2300);
   };
