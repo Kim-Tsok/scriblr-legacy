@@ -51,8 +51,8 @@ const WaitlistForm = () => {
   const ShowSuccessMessage = () => {
     var submitBtn = document.getElementById("submitFormBtn");
     submitBtn.style.backgroundColor = "green";
+    submitBtn.textContent = "Successful";
     setTimeout(() => {
-      submitBtn.textContent = "Successful";
       submitBtn.style.backgroundColor = "rgb(30 58 138)";
     }, 2300);
   };
