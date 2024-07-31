@@ -1,4 +1,6 @@
 const express = require("express");
+const multer = require("multer");
+const upload = multer({ storage: multer.memoryStorage() });
 const cors = require("cors");
 const {
   getContents,
@@ -17,7 +19,7 @@ router.get("/", cors(), getContents);
 router.get("/:id", cors(), getContent);
 
 // POST a new content
-router.post("/", cors(), createContent);
+router.post("/contents", upload.single("cover"), cors(), createContent);
 
 // DELETE a new content
 router.delete("/:id", deleteContent);

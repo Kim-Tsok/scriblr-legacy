@@ -10,6 +10,7 @@ const ContentForm = () => {
   const [title, setTitle] = useState("");
   const [about, setAbout] = useState("");
   const [cover, setCover] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   let characterCount = about.length;
@@ -25,46 +26,69 @@ const ContentForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    document.getElementById("form").style.display = "none";
+    if (isLoading) return;
 
-    const content = { title, about };
-    const response = await fetch("/api/contents", {
-      method: "POST",
-      body: JSON.stringify(content),
-      headers: {
-        "Content-Type": "application/Json",
-      },
-    });
-    const json = await response.json();
-
-    if (!response.ok) {
-      setError(json.error);
+    setIsLoading(true);
+    if (!isLoading) {
+      document.getElementById("form").style.display = "none";
     }
-    if (response.ok) {
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("about", about);
+    if (cover) {
+      formData.append("cover", cover);
+    }
+
+    try {
+      const response = await fetch(
+        "https://scriblr-backend.onrender.com/api/contents",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(
+          `HTTP error! status: ${response.status}, message: ${errorText}`
+        );
+      }
+
+      const json = await response.json();
       setTitle("");
       setAbout("");
+      setCover("");
       setError(null);
       console.log("New book added", json);
       dispatch({ type: "CREATE_CONTENTS", payload: json });
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.error("Error submitting form:", error);
+      setError(error.message);
     }
   };
 
-  const handleContentImageUpload = (e) => {
+  const handleContentImageUpload = async (e) => {
     const file = e.target.files[0];
-
-    TransformFile(file);
+    if (file) {
+      await TransformFile(file);
+    }
   };
 
-  const TransformFile = (file) => {
-    const reader = new FileReader();
-
+  const TransformFile = async (file) => {
     if (file) {
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setCover(reader.result);
-      };
+      try {
+        const compressedBlob = await compressImage(file);
+        setCover(compressedBlob);
+      } catch (error) {
+        console.error("Error compressing image:", error);
+        setError("Error processing image. Please try a different file.");
+      }
     } else {
-      setCover("");
+      setCover(null);
     }
   };
 
@@ -157,13 +181,14 @@ const ContentForm = () => {
               />
             </div>
           </div>
-          <div className="w-full flex items-center justify-center">
+          <div className="w-full flex items-center justify-center flex-col">
             <button
               className="mt-3 px-3 py-2 bg-blue-800 text-white"
               onClick={handleOpenNew}
             >
               Next
             </button>
+            {error && <div className="text-red-500 mt-2">{error}</div>}
           </div>
         </div>
         <div
@@ -187,12 +212,13 @@ const ContentForm = () => {
                 type="submit"
                 onClick={handleSubmit}
                 className="m-2 px-3 py-2 bg-blue-800 text-white"
+                disabled={isLoading}
               >
-                Submit
+                {isLoading ? "Submitting..." : "Submit"}
               </button>
             </div>
           </div>
-
+          {error && <div className="text-red-500 mt-2">{error}</div>}
           <ReactQuill
             theme="snow"
             value={value}

@@ -4,12 +4,18 @@ import { useState } from "react";
 const WaitlistForm = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [isLoading, setIsLoading] = useState("");
   const [error, setError] = useState(null);
   const API_URL =
     import.meta.env.VITE_API_URL || "https://scriblr-backend.onrender.com";
 
   const waitlist = { email, name };
   const handleSubmit = async (e) => {
+    if (isLoading) {
+      const submitBtn = document.getElementById("submitFormBtn");
+
+      submitBtn.style.backgroundColor = "gray";
+    }
     e.preventDefault();
 
     const waitlist = { email, name };
@@ -33,32 +39,30 @@ const WaitlistForm = () => {
       setError(null);
       console.log("New user added", json);
       ShowSuccessMessage();
+      setIsLoading(true);
     } catch (error) {
       console.error("Error:", error);
       setError(error.message);
+      setIsLoading(false);
       ShowErrorMessage();
     }
   };
 
   const ShowSuccessMessage = () => {
-    var successMessage = document.getElementById("successMessage");
-    successMessage.style.opacity = "100";
-    successMessage.style.transition = "0.5s";
-    successMessage.style.display = "block";
+    var submitBtn = document.getElementById("submitFormBtn");
+    submitBtn.style.backgroundColor = "green";
     setTimeout(() => {
-      successMessage.style.opacity = "0";
-      successMessage.style.display = "none";
+      submitBtn.textContent = "Join";
+      submitBtn.style.backgroundColor = "rgb(30 58 138)";
     }, 2300);
   };
   const ShowErrorMessage = () => {
-    var errorMessage = document.getElementById("errorMessage");
-    errorMessage.textContent = error || "Sorry, email could not be sent";
-    errorMessage.style.opacity = "100";
-    errorMessage.style.transition = "0.5s";
-    errorMessage.style.display = "block";
+    var submitBtn = document.getElementById("submitFormBtn");
+    submitBtn.textContent = error || "Sorry, email could not be sent";
+    submitBtn.style.backgroundColor = "red";
     setTimeout(() => {
-      errorMessage.style.opacity = "0";
-      errorMessage.style.display = "none";
+      submitBtn.textContent = "Join";
+      submitBtn.style.backgroundColor = "rgb(30 58 138)";
     }, 2300);
   };
   return (
@@ -87,21 +91,11 @@ const WaitlistForm = () => {
           placeholder="Enter your email address"
           className="p-2 w-[35%] h-[2.5rem] border-2 border-gray-500 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-white rounded-md"
         />
-        <div
-          id="errorMessage"
-          className="px-4 py-2 bg-gradient-to-b from-red-500 to-red-700 text-white w-[35%]  max-sm:w-[78%] z-20 text-center transition-all hidden opacity-0"
-        >
-          Sorry, email could not be sent
-        </div>
-        <div
-          id="successMessage"
-          className="px-4 py-2 w-[35%] max-sm:w-[78%] bg-gradient-to-b from-green-500 to-green-700 text-white text-center transition-all hidden opacity-0"
-        >
-          Email sent successfully
-        </div>
         <button
           className="p-2 h-[2.5rem] px-3 bg-blue-900 text-white m-3"
           type="submit"
+          id="submitFormBtn"
+          disabled={isLoading}
           onClick={handleSubmit}
         >
           <div className="flex items-center justify-center">

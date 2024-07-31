@@ -13,8 +13,8 @@ const contentSchema = new Schema(
       required: true,
     },
     image: {
-      type: Object,
-      required: false,
+      public_id: String,
+      url: String,
     },
   },
   { timestamps: true }
