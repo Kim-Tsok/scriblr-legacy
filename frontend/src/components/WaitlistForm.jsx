@@ -14,6 +14,7 @@ const WaitlistForm = () => {
     if (isLoading) {
       const submitBtn = document.getElementById("submitFormBtn");
 
+      submitBtn.textContent = "Loading...";
       submitBtn.style.backgroundColor = "gray";
     }
     e.preventDefault();
