@@ -20,6 +20,10 @@ const Discover = () => {
         dispatch({ type: "SET_CONTENTS", payload: json });
         setIsLoading(false);
       }
+
+      if (!response.ok) {
+        console.log(error);
+      }
     };
 
     fetchContents();
