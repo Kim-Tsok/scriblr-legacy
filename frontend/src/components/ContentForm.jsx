@@ -1,18 +1,21 @@
 import { useState } from "react";
 import { useContentsContext } from "../hooks/useContentContext";
 import ReactQuill from "react-quill";
+import { useDispatch, useSelector } from "react-redux";
+import { contentsCreate } from "../slices/contentSlice.js";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 
 const ContentForm = () => {
   const [value, setValue] = useState("");
-  const { dispatch } = useContentsContext();
   const [title, setTitle] = useState("");
   const [about, setAbout] = useState("");
   const [cover, setCover] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const dispatch = useDispatch();
+  const { createStatus } = useSelector((state) => state.contents);
   let characterCount = about.length;
   var characterCounter = document.getElementById("characterCounter");
 
@@ -24,6 +27,25 @@ const ContentForm = () => {
     characterCounter.style.color = "gray";
   }
 
+  const handleContentImageUpload = (e) => {
+    const file = e.target.files[0];
+
+    TransformFileData(file);
+  };
+
+  const TransformFileData = (file) => {
+    const reader = new FileReader();
+
+    if (file) {
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setCover(reader.result);
+      };
+    } else {
+      setCover("");
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isLoading) return;
@@ -33,63 +55,13 @@ const ContentForm = () => {
       document.getElementById("form").style.display = "none";
     }
 
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("about", about);
-    if (cover) {
-      formData.append("cover", cover);
-    }
-
-    try {
-      const response = await fetch(
-        "https://scriblr-backend.onrender.com/api/contents",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(
-          `HTTP error! status: ${response.status}, message: ${errorText}`
-        );
-      }
-
-      const json = await response.json();
-      setTitle("");
-      setAbout("");
-      setCover("");
-      setError(null);
-      console.log("New book added", json);
-      dispatch({ type: "CREATE_CONTENTS", payload: json });
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      console.error("Error submitting form:", error);
-      setError(error.message);
-    }
-  };
-
-  const handleContentImageUpload = async (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      await TransformFile(file);
-    }
-  };
-
-  const TransformFile = async (file) => {
-    if (file) {
-      try {
-        const compressedBlob = await compressImage(file);
-        setCover(compressedBlob);
-      } catch (error) {
-        console.error("Error compressing image:", error);
-        setError("Error processing image. Please try a different file.");
-      }
-    } else {
-      setCover(null);
-    }
+    dispatch(
+      contentsCreate({
+        title,
+        about,
+        cover: cover,
+      })
+    );
   };
 
   const handleClose = (e) => {
@@ -175,10 +147,16 @@ const ContentForm = () => {
 
             <div className="bg-white p-5 text-center pr-0">
               Cover Preview
-              <img
-                src={cover}
-                className="h-[256px] w-[190px] object-cover items-center border-2 border-gray-500"
-              />
+              {cover ? (
+                <>
+                  <img
+                    src={cover}
+                    className="h-[270px] w-[180px] object-cover items-center border-2 border-gray-500"
+                  />
+                </>
+              ) : (
+                <p>The cover will be displayed here</p>
+              )}
             </div>
           </div>
           <div className="w-full flex items-center justify-center flex-col">

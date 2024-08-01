@@ -30,30 +30,25 @@ const getContent = async (req, res) => {
 
 // create new content
 const createContent = async (req, res) => {
-  const { title, about } = req.body;
-  let uploadedImage = null;
+  const { title, about, cover } = req.body;
 
   try {
-    if (req.file) {
-      const result = await cloudinary.uploader.upload(
-        req.file.buffer.toString("base64"),
-        {
-          resource_type: "auto",
-        }
-      );
-      uploadedImage = {
-        public_id: result.public_id,
-        url: result.secure_url,
-      };
+    if (cover) {
+      const uploadRes = await cloudinary.uploader.upload(cover, {
+        upload_preset: "scriblr",
+      });
+      if (uploadRes) {
+        const content = new Content({
+          title,
+          about,
+          cover: uploadRes,
+        });
+
+        const savedContent = await content.save();
+
+        res.status(200).send(savedContent);
+      }
     }
-
-    const content = await Content.create({
-      title,
-      about,
-      image: uploadedImage,
-    });
-
-    res.status(200).json(content);
   } catch (error) {
     console.error("Error creating content:", error);
     res.status(400).json({ error: error.message });

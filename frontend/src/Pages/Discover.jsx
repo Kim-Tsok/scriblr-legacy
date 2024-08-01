@@ -58,11 +58,11 @@ const Discover = () => {
         <div className="flex flex-wrap justify-center items-center">
           {contents &&
             contents.map((content) => (
-              <Book key={content._id} content={content} />
+              <Book key={content._id} content={content} cover={content.cover} />
             ))}
         </div>
         <button
-          className="fixed right-0 bottom-0 m-7 bg-gray-300 rounded-full shadow-xl w-10 h-10"
+          className="fixed right-0 bottom-0 m-7 bg-gray-300 rounded-full shadow-xl w-10 h-10 z-[100]"
           onClick={handleOpen}
         >
           +

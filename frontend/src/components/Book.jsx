@@ -3,17 +3,18 @@ const Book = ({ content }) => {
     <>
       <div className="m-4">
         <div className="flex flex-col">
-          <div className="h-[256px] w-[190px] border-2 border-gray-500">
+          <div className="h-[270px] w-[180px] border-2 border-gray-500 overflow-hidden">
             <img
-              src={content.image ? content.image.url : ""}
+              src={content.cover?.url}
               alt={content.title}
+              className="w-full h-full object-cover"
             />
           </div>
-          <div className="w-[190px] h-[50px] border-2 border-gray-500 px-1">
-            <p className="text-left font-bold text-lg text-ellipsis overflow-clip w-[190px] overflow-y-clip h-7">
+          <div className="w-[180px] h-[60px] border-2 border-gray-500 px-2 py-1">
+            <p className="text-left font-bold text-lg text-ellipsis overflow-hidden whitespace-nowrap">
               {content.title}
             </p>
-            <p className="text-left text-sm text-ellipsis overflow-clip w-[190px] text-gray-600">
+            <p className="text-left text-sm text-ellipsis overflow-hidden whitespace-nowrap text-gray-600">
               written by John
             </p>
           </div>

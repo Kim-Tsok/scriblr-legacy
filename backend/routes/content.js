@@ -19,7 +19,7 @@ router.get("/", cors(), getContents);
 router.get("/:id", cors(), getContent);
 
 // POST a new content
-router.post("/contents", upload.single("cover"), cors(), createContent);
+router.post("/", cors(), createContent);
 
 // DELETE a new content
 router.delete("/:id", deleteContent);
