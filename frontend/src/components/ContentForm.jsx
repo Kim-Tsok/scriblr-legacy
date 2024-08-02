@@ -4,6 +4,7 @@ import ReactQuill from "react-quill";
 import { useDispatch, useSelector } from "react-redux";
 import { contentsCreate } from "../slices/contentSlice.js";
 import "react-quill/dist/quill.snow.css";
+import coverPreview from "/cover preview.png";
 import axios from "axios";
 
 const ContentForm = () => {
@@ -140,12 +141,13 @@ const ContentForm = () => {
               <input
                 type="file"
                 accept="image/*"
+                required
                 onChange={handleContentImageUpload}
                 className="p-1 rounded-md border-2 border-zinc-500"
               />
             </div>
 
-            <div className="bg-white p-5 text-center pr-0">
+            <div className="bg-white p-5 text-center pr-0 max-md:hidden">
               Cover Preview
               {cover ? (
                 <>
@@ -155,7 +157,12 @@ const ContentForm = () => {
                   />
                 </>
               ) : (
-                <p>The cover will be displayed here</p>
+                <>
+                  <img
+                    src={coverPreview}
+                    className="h-[270px] w-[180px] object-cover items-center border-2 border-gray-500"
+                  />
+                </>
               )}
             </div>
           </div>

@@ -14,7 +14,7 @@ const mongoose = require("mongoose");
 // GET all emails
 router.get("/", cors(), getEmails);
 // POST a new email
-router.post("/emails", cors(), createEmail);
+router.post("/", cors(), createEmail);
 
 // GET a single content
 router.get("/:id", cors(), getEmail);

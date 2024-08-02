@@ -6,8 +6,6 @@ const WaitlistForm = () => {
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState("");
   const [error, setError] = useState(null);
-  const API_URL =
-    import.meta.env.VITE_API_URL || "https://scriblr-backend.onrender.com";
   const submitBtn = document.getElementById("submitFormBtn");
   const waitlist = { email, name };
 
@@ -16,13 +14,16 @@ const WaitlistForm = () => {
     setIsLoading(true);
     const waitlist = { email, name };
     try {
-      const response = await fetch(`${API_URL}/api/emails`, {
-        method: "POST",
-        body: JSON.stringify(waitlist),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://scriblr-backend.onrender.com/api/emails",
+        {
+          method: "POST",
+          body: JSON.stringify(waitlist),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -97,7 +98,7 @@ const WaitlistForm = () => {
           disabled={isLoading}
           onClick={handleSubmit}
         >
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center z-10">
             Join
             {/* <img src={arrow} alt="arrow-right" className="w-5 ml-2" /> */}
           </div>

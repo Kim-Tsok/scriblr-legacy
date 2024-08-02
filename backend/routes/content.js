@@ -9,7 +9,7 @@ const {
   deleteContent,
   updateContent,
 } = require("../controllers/contentController");
-
+const requireAuth = require("../middleware/requireAuth");
 const router = express.Router();
 router.use(cors());
 // GET all contents
@@ -18,6 +18,8 @@ router.get("/", cors(), getContents);
 // GET a single content
 router.get("/:id", cors(), getContent);
 
+// require auth for routes below
+router.use(requireAuth);
 // POST a new content
 router.post("/", cors(), createContent);
 

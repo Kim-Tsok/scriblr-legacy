@@ -21,6 +21,7 @@ const store = configureStore({
 store.dispatch(contentsFetch());
 
 import "./index.css";
+import { AuthContextProvider } from "./context/AuthContext.jsx";
 import { ContentContextProvider } from "./context/ContentContext.jsx";
 
 const client = new Client();
@@ -30,11 +31,13 @@ client
   .setProject("66a906bd0033565f5a6a");
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
+    <AuthContextProvider>
       <ContentContextProvider>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </ContentContextProvider>
-    </Provider>
+    </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

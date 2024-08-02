@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const contentRoutes = require("./routes/content");
 const emailRoutes = require("./routes/email");
+const userRoutes = require("./routes/user");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
@@ -46,6 +47,7 @@ app.use((req, res, next) => {
 // Routes
 app.use("/api/contents", contentRoutes);
 app.use("/api/emails", emailRoutes);
+app.use("/api/user", userRoutes);
 
 // Connect to db
 mongoose

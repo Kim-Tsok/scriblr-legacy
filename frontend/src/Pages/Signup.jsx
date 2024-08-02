@@ -1,0 +1,94 @@
+import { useState } from "react";
+import { useSignup } from "../hooks/useSignup";
+import { Link } from "react-router-dom";
+
+const Signup = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { signup, error, isLoading } = useSignup();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await signup(username, firstName, lastName, email, password);
+  };
+  return (
+    <>
+      <div className="p-2 w-screen h-screen flex items-center justify-center font-mono">
+        <form
+          onSubmit={handleSubmit}
+          className="mt-10 flex flex-col p-4 border-2 border-neutral-600 rounded-md w-[30%] max-lg:w-[50%] max-md:w-[80%]"
+        >
+          <h3 className="text-2xl text-center font-bold text-blue-800 mb-4">
+            Sign up
+          </h3>
+          <div className="flex w-full mb-2 mr-4">
+            <div className="flex flex-col">
+              <label>First Name:</label>
+              <input
+                type="text"
+                onChange={(e) => setFirstName(e.target.value)}
+                value={firstName}
+                placeholder="John"
+                className="border-2 border-neutral-600 outline-none rounded-md px-2 p-1 w-full"
+              />
+            </div>
+            <div className="flex flex-col ml-4">
+              <label>Last Name:</label>
+              <input
+                type="text"
+                onChange={(e) => setLastName(e.target.value)}
+                value={lastName}
+                placeholder="Doe"
+                className="border-2 border-neutral-600 outline-none rounded-md px-2 p-1 w-full "
+              />
+            </div>
+          </div>
+          <label>Email:</label>
+          <input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            placeholder="johndoe123@gmail.com"
+            className="border-2 border-neutral-600 outline-none rounded-md px-2 p-1 mb-2"
+          />
+          <label>Username:</label>
+          <input
+            type="text"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+            placeholder="johndoe01"
+            className="border-2 border-neutral-600 outline-none rounded-md px-2 p-1 mb-2"
+          />
+          <label>Password:</label>
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            placeholder="enter your password"
+            className="border-2 border-neutral-600 outline-none rounded-md px-2 p-1"
+          />
+          <button
+            type="submit"
+            className="p-2 h-[2.5rem] px-3 bg-blue-900 text-white my-3 text-center"
+            disabled={isLoading}
+          >
+            Signup
+          </button>
+          <p className="text-center text-[16px]">
+            Already have an account?{" "}
+            <Link to="/login" className="text-blue-800 underline">
+              login
+            </Link>
+          </p>
+          {error && <p>{error}</p>}
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default Signup;
