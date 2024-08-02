@@ -41,13 +41,13 @@ const BookDetails = () => {
             >
               Read Book
             </Link>
-            <Link
+            {/* <Link
               to="/discover"
               onClick={handleClick}
               className="p-2 h-[2.5rem] px-3 bg-red-600 text-white text-center"
             >
               Delete
-            </Link>
+            </Link> */}
           </div>
           <div className="px-4 w-[50%] max-md:w-[95%]">
             <div className="mb-2">
