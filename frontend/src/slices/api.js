@@ -1,4 +1,4 @@
-export const url = "http://localhost:5174/api";
+export const url = "https://scriblr-backend.onrender.com/api";
 
 export const setHeaders = () => {
   const headers = {
