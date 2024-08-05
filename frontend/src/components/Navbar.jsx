@@ -57,7 +57,7 @@ const Navbar = () => {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="dropdown-content menu rounded-box z-[1] w-[8rem] border-2 border-gray-300 p-2 shadow bg-white"
+                    className="text-ellipsis dropdown-content menu rounded-box z-[1] w-[8rem] border-2 border-gray-300 p-2 shadow bg-white"
                   >
                     <li>
                       <button>Profile</button>
@@ -67,7 +67,7 @@ const Navbar = () => {
                         Logout
                       </button>
                     </li>
-                    <li className="text-gray-600 items-end mt-2">
+                    <li className="text-gray-600 items-end mt-2 text-ellipsis">
                       {user?.username}
                     </li>
                   </ul>
