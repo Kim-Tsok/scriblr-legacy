@@ -9,10 +9,10 @@ const Landing = () => {
   return (
     <div className="h-screen text-black bg-gradient-to-b from-slate-800 to-black">
       <div className="w-screen flex items-center justify-center h-full -mt-[4rem] text-white flex-col overflow-y-clip">
-        <h1 className="text-[30px] font-bold max-sm:text-[24px] max-md:text-[27px]">
+        <h1 className="text-[30px] font-bold max-sm:text-[24px] max-md:text-[27px] text-white">
           It only takes one line
         </h1>
-        <p className="w-[50%] m-2 text-center max-md:w-[87%] max-sm:text-sm">
+        <p className="w-[50%] m-2 text-center max-md:w-[87%] max-sm:text-sm text-white">
           Scriblr is a decentralized hub for writers, publisher and readers
           where you hire and be hired, read and be read, find and be found.
           Where Books, articles, scripts and other content are ranked on generic

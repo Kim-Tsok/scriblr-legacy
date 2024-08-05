@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
@@ -9,11 +9,13 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signup, error, isLoading } = useSignup();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     await signup(firstName, lastName, username, email, password);
+    navigate("/discover");
   };
   return (
     <>
@@ -33,7 +35,7 @@ const Signup = () => {
                 onChange={(e) => setFirstName(e.target.value)}
                 value={firstName}
                 placeholder="John"
-                className="border-2 border-neutral-600 outline-none rounded-md px-2 p-1 w-full"
+                className="border-2 bg-white border-neutral-600 outline-none rounded-md px-2 p-1 w-full"
               />
             </div>
             <div className="flex flex-col ml-4">
@@ -43,7 +45,7 @@ const Signup = () => {
                 onChange={(e) => setLastName(e.target.value)}
                 value={lastName}
                 placeholder="Doe"
-                className="border-2 border-neutral-600 outline-none rounded-md px-2 p-1 w-full "
+                className="border-2 border-neutral-600 bg-white outline-none rounded-md px-2 p-1 w-full "
               />
             </div>
           </div>
@@ -53,7 +55,7 @@ const Signup = () => {
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             placeholder="johndoe123@gmail.com"
-            className="border-2 border-neutral-600 outline-none rounded-md px-2 p-1 mb-2"
+            className="border-2 border-neutral-600 bg-white outline-none rounded-md px-2 p-1 mb-2"
           />
           <label>Username:</label>
           <input
@@ -61,7 +63,7 @@ const Signup = () => {
             onChange={(e) => setUsername(e.target.value)}
             value={username}
             placeholder="johndoe01"
-            className="border-2 border-neutral-600 outline-none rounded-md px-2 p-1 mb-2"
+            className="border-2 border-neutral-600 bg-white outline-none rounded-md px-2 p-1 mb-2"
           />
           <label>Password:</label>
           <input
@@ -69,7 +71,7 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             placeholder="enter your password"
-            className="border-2 border-neutral-600 outline-none rounded-md px-2 p-1"
+            className="border-2 border-neutral-600 bg-white outline-none rounded-md px-2 p-1"
           />
           <button
             type="submit"

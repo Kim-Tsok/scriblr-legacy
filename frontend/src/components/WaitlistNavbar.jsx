@@ -6,7 +6,7 @@ const Navbar = () => {
     <div className="w-screen h-[4rem] p-3 flex items-center justify-between text-white px-9 max-sm:px-5">
       <div className="flex items-center">
         <img src={logo} alt="logo" className="w-5 h-5 mx-1" />
-        <h1 className="font-bold text-xl">Scriblr</h1>
+        <h1 className="font-bold text-xl text-white">Scriblr</h1>
       </div>
       <div className="flex font-mono">
         <ul>
@@ -19,7 +19,7 @@ const Navbar = () => {
           <i className="mx-2">
             <a href="#">faq</a>
           </i> */}
-          <i className="mx-2">
+          <i className="mx-2 text-white">
             <Link to={"/about"}>About</Link>
           </i>
         </ul>

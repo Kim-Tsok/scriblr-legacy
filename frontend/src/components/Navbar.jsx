@@ -59,7 +59,9 @@ const Navbar = () => {
                   )}
                   {user && (
                     <>
-                      <li>profile</li>
+                      <li>
+                        <button>profile</button>
+                      </li>
                       <li>
                         <button onClick={handleLogout} className="text-red-600">
                           logout

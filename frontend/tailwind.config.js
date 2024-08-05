@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   themes: [
@@ -14,5 +15,24 @@ export default {
     themes: false,
     base: false,
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"),
+    plugin(function ({ addBase, theme }) {
+      addBase({
+        "input:-webkit-autofill": {
+          "box-shadow": "0 0 0 30px white inset !important",
+          "-webkit-text-fill-color": "black !important",
+        },
+        "input:-webkit-autofill:hover": {
+          "box-shadow": "0 0 0 30px white inset !important",
+        },
+        "input:-webkit-autofill:focus": {
+          "box-shadow": "0 0 0 30px white inset !important",
+        },
+        "input:-webkit-autofill:active": {
+          "box-shadow": "0 0 0 30px white inset !important",
+        },
+      });
+    }),
+  ],
 };

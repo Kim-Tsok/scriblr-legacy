@@ -98,7 +98,7 @@ const WaitlistForm = () => {
           disabled={isLoading}
           onClick={handleSubmit}
         >
-          <div className="flex items-center justify-center z-10">
+          <div className="flex items-center justify-center z-10 text-white bg-blue-900">
             Join
             {/* <img src={arrow} alt="arrow-right" className="w-5 ml-2" /> */}
           </div>
