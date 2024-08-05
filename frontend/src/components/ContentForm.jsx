@@ -88,7 +88,7 @@ const ContentForm = () => {
         id="form"
       >
         <div
-          className="bg-white flex flex-col w-[40rem] font-mono px-[3rem] py-[2rem] rounded-lg border-2 border-gray-100 shadow-xl m-4 overflow-hidden justify-center items-center"
+          className="bg-white flex flex-col font-mono px-[3rem] py-[2rem] rounded-lg border-2 border-gray-100 shadow-xl m-4 overflow-hidden justify-center items-center"
           onSubmit={handleSubmit}
           id="firstForm"
         >

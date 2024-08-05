@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import signedOutAvatar from "/person.png";
 import avatar from "/avatar6.png";
 import logo from "/logo.svg";
+import close from "/xmark.svg";
 import bars from "/bars.svg";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -56,11 +57,8 @@ const Navbar = () => {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="dropdown-content menu rounded-box z-[1] w-[10rem] border-2 border-gray-300 p-2 shadow bg-white"
+                    className="dropdown-content menu rounded-box z-[1] w-[8rem] border-2 border-gray-300 p-2 shadow bg-white"
                   >
-                    <li className="text-gray-700 mx-4 mb-2">
-                      {user?.username}
-                    </li>
                     <li>
                       <button>Profile</button>
                     </li>
@@ -68,6 +66,9 @@ const Navbar = () => {
                       <button onClick={handleLogout} className="text-red-600">
                         Logout
                       </button>
+                    </li>
+                    <li className="text-gray-600 items-end mt-2">
+                      {user?.username}
                     </li>
                   </ul>
                 </div>
@@ -97,11 +98,24 @@ const Navbar = () => {
                 </div>
               </li>
             )}
-            <li className="md:hidden">
-              <button onClick={toggleMenu} className="p-2">
-                <img src={bars} className="w-5 h-5" alt="Menu" />
-              </button>
-            </li>
+            {!isMenuOpen && (
+              <>
+                <li className="md:hidden">
+                  <button onClick={toggleMenu} className="p-2">
+                    <img src={bars} className="w-5 h-5" alt="Menu" />
+                  </button>
+                </li>
+              </>
+            )}
+            {isMenuOpen && (
+              <>
+                <li className="md:hidden">
+                  <button onClick={toggleMenu} className="p-2">
+                    <img src={close} className="w-5 h-5" alt="Menu" />
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
