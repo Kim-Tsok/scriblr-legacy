@@ -45,7 +45,7 @@ const Navbar = () => {
               <li className="mx-2">|</li>
             </div>
             {user && (
-              <li className="mx-2">
+              <li className="mx-2 font-sans">
                 <div className="dropdown dropdown-hover dropdown-end">
                   <div tabIndex={0}>
                     <img
@@ -58,6 +58,9 @@ const Navbar = () => {
                     tabIndex={0}
                     className="dropdown-content menu rounded-box z-[1] w-[10rem] border-2 border-gray-300 p-2 shadow bg-white"
                   >
+                    <li className="text-gray-700 mx-4 mb-2">
+                      {user?.username}
+                    </li>
                     <li>
                       <button>Profile</button>
                     </li>
@@ -71,7 +74,7 @@ const Navbar = () => {
               </li>
             )}
             {!user && (
-              <li className="mx-2">
+              <li className="mx-2 font-sans">
                 <div className="dropdown dropdown-hover dropdown-end">
                   <div tabIndex={0} className="m-0 border-none">
                     <img
