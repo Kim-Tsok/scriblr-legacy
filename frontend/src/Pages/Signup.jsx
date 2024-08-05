@@ -14,7 +14,6 @@ const Signup = () => {
     e.preventDefault();
 
     await signup(firstName, lastName, username, email, password);
-    console.log(error);
   };
   return (
     <>
