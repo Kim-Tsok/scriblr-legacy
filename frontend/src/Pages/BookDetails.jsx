@@ -25,9 +25,9 @@ const BookDetails = () => {
   console.log(content);
   return (
     <>
-      <div className="p-4">
-        <div className="mt-[4.5rem] flex max-md:flex-col">
-          <div className="flex flex-col justify-center items-center">
+      <div className="p-4 bg-white">
+        <div className="mt-[4.5rem] flex max-md:flex-col bg-white text-black">
+          <div className="flex flex-col justify-center items-center bg-white">
             <div className="h-[270px] w-[180px] border-2 border-gray-500 overflow-hidden">
               <img
                 src={content?.cover?.url}

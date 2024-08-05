@@ -6,7 +6,10 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  background-color: #fff;
+  color: black;
 }
+
 .ql-editor {
   width: 8.5in;
   min-height: 11in;

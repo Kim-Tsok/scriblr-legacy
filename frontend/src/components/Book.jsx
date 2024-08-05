@@ -14,7 +14,7 @@ const Book = ({ content }) => {
               />
             </div>
             <div className="w-[180px] h-[60px] border-2 border-gray-500 px-2 py-1">
-              <p className="text-left font-bold text-lg text-ellipsis overflow-hidden whitespace-nowrap">
+              <p className="text-left font-bold text-lg text-ellipsis overflow-hidden whitespace-nowrap text-black">
                 {content.title}
               </p>
               <p className="text-left text-sm text-ellipsis overflow-hidden whitespace-nowrap text-gray-600">
