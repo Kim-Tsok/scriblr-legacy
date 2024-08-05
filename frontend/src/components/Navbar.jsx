@@ -1,80 +1,133 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import signedOutAvatar from "/person.png";
 import avatar from "/avatar6.png";
 import logo from "/logo.svg";
+import bars from "/bars.svg";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
   };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <>
-      <div className="w-screen h-[3.2rem] p-3 flex items-center justify-between px-9 max-sm:px-5 text-black border-b-2 border-zinc fixed bg-white z-10 mb-10">
-        <div className="flex items-center">
-          <img src={logo} alt="logo" className="w-5 h-5 mx-1" />
-          <h1 className="font-bold text-2xl">Scriblr</h1>
-        </div>
+      <div className="w-full h-[3.2rem] p-3 flex items-center justify-between px-4 sm:px-9 text-black border-b-2 border-zinc fixed bg-white z-10 mb-10">
+        <Link className="flex items-center" to="/discover">
+          <img src={logo} alt="logo" className="w-5 h-5 mr-1" />
+          <h1 className="font-bold text-xl sm:text-2xl">Scriblr</h1>
+        </Link>
         <div className="flex font-mono">
-          <ul className="flex items-center justify-center ">
-            <div className="flex max-md:hidden">
+          <ul className="flex items-center justify-center">
+            <div className="hidden md:flex">
               <li className="mx-2">
                 <Link to="/discover">Books</Link>
               </li>
               <li className="mx-2">
-                <Link to={""}>Articles</Link>
+                <Link to="">Articles</Link>
               </li>
               <li className="mx-2">
-                <Link to={""}>Writers</Link>
+                <Link to="">Writers</Link>
               </li>
               <li className="mx-2">
-                <Link to={""}>Publishers</Link>
+                <Link to="">Publishers</Link>
               </li>
-              |
+              <li className="mx-2">|</li>
             </div>
-            <li className="mx-2">
-              <div className="dropdown dropdown-hover dropdown-end">
-                <div tabIndex={0}>
-                  <img
-                    src={avatar}
-                    className="rounded-full border-2 w-7 h-7 items-center object-cover"
-                  />
+            {user && (
+              <li className="mx-2">
+                <div className="dropdown dropdown-hover dropdown-end">
+                  <div tabIndex={0}>
+                    <img
+                      src={avatar}
+                      className="rounded-full w-7 h-7 items-center object-cover"
+                      alt="User avatar"
+                    />
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content menu rounded-box z-[1] w-[10rem] border-2 border-gray-300 p-2 shadow bg-white"
+                  >
+                    <li>
+                      <button>Profile</button>
+                    </li>
+                    <li>
+                      <button onClick={handleLogout} className="text-red-600">
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
                 </div>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu rounded-box z-[1] w-52 p-2 shadow bg-white mt-2 right-0"
-                >
-                  {!user && (
-                    <>
-                      <li>
-                        <Link to="/signup">Signup</Link>
-                      </li>
-                      <li>
-                        <Link to="/login">Login</Link>
-                      </li>
-                    </>
-                  )}
-                  {user && (
-                    <>
-                      <li>
-                        <button>profile</button>
-                      </li>
-                      <li>
-                        <button onClick={handleLogout} className="text-red-600">
-                          logout
-                        </button>
-                      </li>
-                    </>
-                  )}
-                </ul>
-              </div>
+              </li>
+            )}
+            {!user && (
+              <li className="mx-2">
+                <div className="dropdown dropdown-hover dropdown-end">
+                  <div tabIndex={0} className="m-0 border-none">
+                    <img
+                      src={signedOutAvatar}
+                      className="rounded-full border-2 w-7 h-7 items-center object-cover"
+                      alt="Sign in"
+                    />
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content menu rounded-box z-[1] w-[10rem] border-2 border-gray-300 p-2 shadow bg-white"
+                  >
+                    <li>
+                      <Link to="/signup">Signup</Link>
+                    </li>
+                    <li>
+                      <Link to="/login">Login</Link>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            )}
+            <li className="md:hidden">
+              <button onClick={toggleMenu} className="p-2">
+                <img src={bars} className="w-5 h-5" alt="Menu" />
+              </button>
             </li>
           </ul>
         </div>
       </div>
+      {isMenuOpen && (
+        <div className="fixed h-screen flex justify-center items-center text-center text-3xl leading-[3rem] top-[3.2rem] left-0 right-0 bg-white border-b-2 border-zinc z-20 md:hidden">
+          <ul className="py-2">
+            <li className="px-4 py-2">
+              <Link to="/discover" onClick={toggleMenu}>
+                Books
+              </Link>
+            </li>
+            <li className="px-4 py-2">
+              <Link to="" onClick={toggleMenu}>
+                Articles
+              </Link>
+            </li>
+            <li className="px-4 py-2">
+              <Link to="" onClick={toggleMenu}>
+                Writers
+              </Link>
+            </li>
+            <li className="px-4 py-2">
+              <Link to="" onClick={toggleMenu}>
+                Publishers
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </>
   );
 };

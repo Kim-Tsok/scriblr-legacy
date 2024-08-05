@@ -20,7 +20,7 @@ const Login = () => {
       <div className="p-2 w-screen h-screen flex items-center justify-center font-mono">
         <form
           onSubmit={handleSubmit}
-          className="mt-10 flex flex-col p-4 border-2 border-neutral-600 rounded-md w-[30%] max-lg:w-[50%] max-md:w-[80%]"
+          className="mt-10 flex flex-col p-4 border-2 border-neutral-600 rounded-md w-[30%] max-lg:w-[50%] max-md:w-[90%]"
         >
           <h3 className="text-2xl text-center font-bold text-blue-800 mb-4">
             Login
@@ -31,7 +31,7 @@ const Login = () => {
             onChange={(e) => setUsername(e.target.value)}
             value={username}
             placeholder="johndoe01"
-            className="border-2 border-neutral-600 outline-none rounded-md px-2 p-1 mb-2"
+            className="border-2 bg-white border-neutral-600 outline-none rounded-md px-2 p-1 mb-2"
           />
           <label>Password:</label>
           <input
@@ -39,7 +39,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             placeholder="enter your password"
-            className="border-2 border-neutral-600 outline-none rounded-md px-2 p-1"
+            className="border-2 bg-white border-neutral-600 outline-none rounded-md px-2 p-1"
           />
           <button
             type="submit"

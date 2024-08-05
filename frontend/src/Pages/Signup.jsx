@@ -22,12 +22,12 @@ const Signup = () => {
       <div className="p-2 w-screen h-screen flex items-center justify-center font-mono">
         <form
           onSubmit={handleSubmit}
-          className="mt-10 flex flex-col p-4 border-2 border-neutral-600 rounded-md w-[30%] max-lg:w-[50%] max-md:w-[80%]"
+          className="mt-10 flex flex-col p-4 border-2 border-neutral-600 rounded-md w-[33%] max-lg:w-[50%] max-md:w-[90%]"
         >
           <h3 className="text-2xl text-center font-bold text-blue-800 mb-4">
             Sign up
           </h3>
-          <div className="flex w-full mb-2 mr-4">
+          <div className="flex w-full mb-2 mr-4 max-md:flex-col">
             <div className="flex flex-col">
               <label>First Name:</label>
               <input
@@ -38,7 +38,7 @@ const Signup = () => {
                 className="border-2 bg-white border-neutral-600 outline-none rounded-md px-2 p-1 w-full"
               />
             </div>
-            <div className="flex flex-col ml-4">
+            <div className="flex flex-col md:ml-4 ">
               <label>Last Name:</label>
               <input
                 type="text"

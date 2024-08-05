@@ -2,13 +2,21 @@ import Discover from "./Discover";
 import About from "./About";
 import BookDetails from "./BookDetails";
 import Home from "./Home";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import AppRouter from "./AppRouter";
 import Navbar from "../components/Navbar";
 import Signup from "./Signup";
 import Login from "./Login";
+import { AuthContext } from "../context/AuthContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function App() {
+  const { user } = useAuthContext();
   return (
     <>
       <Router>
@@ -20,9 +28,18 @@ export default function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/discover" element={<Discover />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/discover"
+            element={user ? <Discover /> : <Navigate to="/signup" />}
+          />
+          <Route
+            path="/signup"
+            element={user ? <Navigate to="/discover" /> : <Signup />}
+          />
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/discover" /> : <Login />}
+          />
           <Route path="/discover/books/d/:id" element={<BookDetails />} />
         </Routes>
       </Router>

@@ -115,7 +115,7 @@ const ContentForm = () => {
                 id="title"
                 required
                 onChange={(e) => setTitle(e.target.value)}
-                className="outline-none border-2 border-gray-500 rounded-md p-1 mb-4 px-2 font-serif"
+                className="outline-none border-2 bg-white border-gray-500 rounded-md p-1 mb-4 px-2 font-serif"
               />
               <label>About:</label>
               <textarea
@@ -129,7 +129,7 @@ const ContentForm = () => {
                 maxLength={1024}
                 required
                 onChange={(e) => setAbout(e.target.value)}
-                className="outline-none border-2 border-gray-500 rounded-md p-1 px-2 font-serif resize-none"
+                className="outline-none border-2 bg-white border-gray-500 rounded-md p-1 px-2 font-serif resize-none"
               />
               <label
                 className="text-right text-sm text-gray-500 mb-3"
