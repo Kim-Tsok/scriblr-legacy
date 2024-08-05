@@ -10,25 +10,6 @@ const cors = require("cors");
 
 const app = express();
 
-const { auth } = require("express-openid-connect");
-
-const config = {
-  authRequired: false,
-  auth0Logout: true,
-  secret: "a long, randomly-generated string stored in env",
-  baseURL: "http://localhost:5174",
-  clientID: "XByHoPcfaAJq3fBFqofzK2YDHivMfDlO",
-  issuerBaseURL: "https://dev-sbbhzdx28uht7krd.us.auth0.com",
-};
-
-// auth router attaches /login, /logout, and /callback routes to the baseURL
-app.use(auth(config));
-
-// req.isAuthenticated is provided from the auth router
-app.get("/", (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-});
-
 // CORS middleware (should be one of the first middleware)
 const allowedOrigins = ["https://scriblr.vercel.app", "http://localhost:5173"];
 
