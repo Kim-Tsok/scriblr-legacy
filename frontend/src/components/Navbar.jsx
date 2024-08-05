@@ -36,22 +36,40 @@ const Navbar = () => {
               |
             </div>
             <li className="mx-2">
-              <Link to="/signup">
-                <img
-                  src={avatar}
-                  className="rounded-full border-2 w-7 h-7 items-center object-cover"
-                ></img>
-              </Link>
+              <div className="dropdown dropdown-hover dropdown-end">
+                <div tabIndex={0}>
+                  <img
+                    src={avatar}
+                    className="rounded-full border-2 w-7 h-7 items-center object-cover"
+                  />
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu rounded-box z-[1] w-52 p-2 shadow bg-white mt-2 right-0"
+                >
+                  {!user && (
+                    <>
+                      <li>
+                        <Link to="/signup">Signup</Link>
+                      </li>
+                      <li>
+                        <Link to="/login">Login</Link>
+                      </li>
+                    </>
+                  )}
+                  {user && (
+                    <>
+                      <li>profile</li>
+                      <li>
+                        <button onClick={handleLogout} className="text-red-600">
+                          logout
+                        </button>
+                      </li>
+                    </>
+                  )}
+                </ul>
+              </div>
             </li>
-            {user && (
-              <>
-                <li className="mr-2">
-                  <button onClick={handleLogout} className="text-red-600">
-                    logout
-                  </button>
-                </li>
-              </>
-            )}
           </ul>
         </div>
       </div>

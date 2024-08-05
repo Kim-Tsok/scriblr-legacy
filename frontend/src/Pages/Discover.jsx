@@ -47,14 +47,14 @@ const Discover = () => {
       >
         <div className="loader"></div>
       </div>
-      <div className="overflow-hidden">
-        <h1 className="m-4 text-center font-bold font-mono text-3xl text-blue-800 mb-5 mt-[5rem]">
+      <div className="overflow-hidden bg-white">
+        <h1 className="m-4 text-center font-bold font-mono text-3xl text-blue-800 bg-white mb-5 mt-[5rem]">
           All Books
         </h1>
         <div className="w-screen flex items-center justify-center overflow-hidden relative">
           <ContentForm />
         </div>
-        <div className="flex flex-wrap justify-center items-center">
+        <div className="flex flex-wrap justify-center items-center bg-white">
           {contents &&
             contents.map((content) => (
               <Book key={content._id} content={content} cover={content.cover} />
