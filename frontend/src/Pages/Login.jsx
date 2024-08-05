@@ -52,6 +52,14 @@ const Login = () => {
               signup
             </Link>
           </p>
+          <p className="text-center font-bold my-2">-or-</p>
+          <button
+            type="submit"
+            className="p-2 h-[2.5rem] px-3 bg-gradient-to-b from-gray-200 to-neutral-300 text-black  text-center border-2 border-gray-300"
+            disabled={isLoading}
+          >
+            Google
+          </button>
           {error && <p>{error}</p>}
         </form>
       </div>

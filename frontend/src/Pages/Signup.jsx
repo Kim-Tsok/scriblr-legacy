@@ -13,7 +13,8 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await signup(username, firstName, lastName, email, password);
+    await signup(firstName, lastName, username, email, password);
+    console.log(error);
   };
   return (
     <>
@@ -84,7 +85,19 @@ const Signup = () => {
               login
             </Link>
           </p>
-          {error && <p>{error}</p>}
+          <p className="text-center font-bold my-2">-or-</p>
+          <button
+            type="submit"
+            className="p-2 h-[2.5rem] px-3 bg-gradient-to-b from-gray-200 to-neutral-300 text-black  text-center border-2 border-gray-300"
+            disabled={isLoading}
+          >
+            Google
+          </button>
+          {error && (
+            <div className="p-2 border-2 border-red-700 bg-red-200 text-red-600 mt-2">
+              {error}
+            </div>
+          )}
         </form>
       </div>
     </>
