@@ -9,7 +9,7 @@ const Navbar = () => {
   const { user } = useAuthContext();
 
   const handleLogout = () => {
-    logout;
+    logout();
   };
   return (
     <>
