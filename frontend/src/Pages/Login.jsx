@@ -23,7 +23,7 @@ const Login = () => {
           <h3 className="text-2xl text-center font-bold text-blue-800 mb-4">
             Login
           </h3>
-          <label>Username or email:</label>
+          <label>Username:</label>
           <input
             type="text"
             onChange={(e) => setUsername(e.target.value)}
@@ -60,7 +60,11 @@ const Login = () => {
           >
             Google
           </button>
-          {error && <p>{error}</p>}
+          {error && (
+            <div className="p-2 border-2 border-red-700 bg-red-200 text-red-600 mt-2">
+              {error}
+            </div>
+          )}
         </form>
       </div>
     </>

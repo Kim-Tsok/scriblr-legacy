@@ -30,9 +30,9 @@ const userSchema = new Schema({
 
 // static signup method
 userSchema.statics.signup = async function (
-  username,
   firstName,
   lastName,
+  username,
   email,
   password
 ) {
