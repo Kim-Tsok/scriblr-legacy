@@ -15,6 +15,14 @@ const ContentForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleFileSubmit = async (e) => {};
+
   const dispatch = useDispatch();
   const { createStatus } = useSelector((state) => state.contents);
   let characterCount = about.length;
@@ -50,7 +58,19 @@ const ContentForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isLoading) return;
+    const formData = new FormData();
+    formData.append("book", file);
 
+    try {
+      await axios.post("/api/books/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      // Handle success
+    } catch (error) {
+      // Handle error
+    }
     setIsLoading(true);
     if (!isLoading) {
       document.getElementById("form").style.display = "none";
@@ -86,6 +106,7 @@ const ContentForm = () => {
       <form
         className="w-screen h-screen items-center justify-center font-mono hidden z-50 fixed inset-0 bg-black backdrop-blur-sm bg-opacity-25"
         id="form"
+        onSubmit={handleFileSubmit}
       >
         <div
           className="bg-white flex flex-col font-mono px-[3rem] py-[2rem] rounded-lg border-2 border-gray-100 shadow-xl m-4 overflow-hidden justify-center items-center"
@@ -145,6 +166,14 @@ const ContentForm = () => {
                 onChange={handleContentImageUpload}
                 className="p-1 rounded-md border-2 border-zinc-500"
               />
+              {/* <label>Book:</label>
+              <input
+                type="file"
+                accept=".pdf, .docx"
+                required
+                onChange={handleFileChange}
+                className="p-1 rounded-md border-2 border-zinc-500"
+              /> */}
             </div>
 
             <div className="bg-white p-5 text-center pr-0 max-md:hidden">

@@ -30,7 +30,7 @@ const BookDetails = () => {
           <div className="flex flex-col justify-center items-center bg-white">
             <div className="h-[270px] w-[180px] border-2 border-gray-500 overflow-hidden">
               <img
-                src={content?.cover?.url}
+                src={content?.cover?.secure_url}
                 alt={content?.title}
                 className="w-full h-full object-cover"
               />

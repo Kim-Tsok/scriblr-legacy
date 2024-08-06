@@ -8,7 +8,7 @@ const Book = ({ content }) => {
           <div className="flex flex-col">
             <div className="h-[270px] w-[180px] max-md:h-[180px] max-md:w-[120px] border-2 border-gray-500 overflow-hidden">
               <img
-                src={content.cover?.url}
+                src={content.cover?.secure_url}
                 alt={content.title}
                 className="w-full h-full object-cover"
               />

@@ -14,6 +14,7 @@ import Signup from "./Signup";
 import Login from "./Login";
 import { AuthContext } from "../context/AuthContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import TermsOfService from "./Legal/TermsOfService";
 
 export default function App() {
   const { user } = useAuthContext();
@@ -41,6 +42,7 @@ export default function App() {
             element={user ? <Navigate to="/discover" /> : <Login />}
           />
           <Route path="/discover/books/d/:id" element={<BookDetails />} />
+          <Route path="/termsofservice" element={<TermsOfService />} />
         </Routes>
       </Router>
     </>

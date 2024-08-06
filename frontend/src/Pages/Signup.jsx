@@ -11,6 +11,9 @@ const Signup = () => {
   const { signup, error, isLoading } = useSignup();
   const navigate = useNavigate();
 
+  const handleGoogleSignIn = () => {
+    window.location.href = "/auth/google";
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
