@@ -17,10 +17,4 @@ const emailSchema = new Schema(
   { timestamps: true }
 );
 
-const exists = await this.findOne({ email });
-
-if (exists) {
-  throw Error("Email already in use");
-}
-
 module.exports = mongoose.model("Email", emailSchema);
