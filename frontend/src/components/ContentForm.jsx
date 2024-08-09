@@ -68,13 +68,11 @@ const ContentForm = () => {
         },
       });
       // Handle success
+      document.getElementById("form").style.display = "none";
     } catch (error) {
-      // Handle error
+      document.getElementById("main").style.display = "flex";
     }
     setIsLoading(true);
-    if (!isLoading) {
-      document.getElementById("form").style.display = "none";
-    }
 
     dispatch(
       contentsCreate({

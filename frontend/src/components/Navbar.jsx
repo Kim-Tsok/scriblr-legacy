@@ -26,7 +26,7 @@ const Navbar = () => {
       <div className="w-full h-[3.2rem] p-3 flex items-center justify-between px-4 sm:px-9 text-black border-b-2 border-zinc fixed bg-white z-10 mb-10">
         <Link className="flex items-center" to="/discover">
           <img src={logo} alt="logo" className="w-5 h-5 mr-1" />
-          <h1 className="font-bold text-xl sm:text-2xl">Scriblr</h1>
+          <h1 className="font-bold text-xl sm:text-2xl font-mono">Scriblr</h1>
         </Link>
         <div className="flex font-mono">
           <ul className="flex items-center justify-center">

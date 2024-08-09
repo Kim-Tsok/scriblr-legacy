@@ -7,12 +7,12 @@ import linkedin from "/linkedin-in.svg";
 
 const Landing = () => {
   return (
-    <div className="h-screen text-black bg-gradient-to-b from-slate-800 to-black">
-      <div className="w-screen flex items-center justify-center h-full -mt-[4rem] text-white flex-col overflow-y-clip">
-        <h1 className="text-[30px] font-bold max-sm:text-[24px] max-md:text-[27px] text-white">
+    <div className="h-screen text-black bg-white">
+      <div className="w-screen flex items-center justify-center h-full -mt-[4rem] text-black flex-col overflow-y-clip">
+        <h1 className="text-[30px] font-bold max-sm:text-[24px] max-md:text-[27px] text-black">
           It only takes one line
         </h1>
-        <p className="w-[50%] m-2 text-center max-md:w-[87%] max-sm:text-sm text-white">
+        <p className="w-[50%] m-2 text-center max-md:w-[87%] max-sm:text-sm text-black">
           Scriblr is a decentralized hub for writers, publisher and readers
           where you hire and be hired, read and be read, find and be found.
           Where Books, articles, scripts and other content are ranked on generic
@@ -23,13 +23,13 @@ const Landing = () => {
           <WaitlistForm />
           {/* <Link
             // to="/discover"
-            className="bg-white py-2 px-4 text-blue-800 font-semibold m-2 flex items-center justify-center"
+            className="bg-black py-2 px-4 text-blue-800 font-semibold m-2 flex items-center justify-center"
           >
             Join Waitlist
           </Link> */}
           {/* <a
             href="#"
-            className="border-2 border-white w-[90px] h-[40px] text-white font-semibold m-2 flex items-center justify-center"
+            className="border-2 border-black w-[90px] h-[40px] text-black font-semibold m-2 flex items-center justify-center"
           >
             Sign in
           </a> */}

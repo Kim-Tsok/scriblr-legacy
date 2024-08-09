@@ -21,7 +21,7 @@ const Loader = () => {
   return (
     <>
       <div
-        className="w-screen bg-black h-screen fixed flex justify-center items-center z-50"
+        className="w-screen bg-white h-screen fixed flex justify-center items-center z-50"
         ref={loaderRef}
       >
         <div

@@ -45,23 +45,23 @@ const WaitlistForm = () => {
   };
   const ShowSuccessMessage = () => {
     var submitBtn = document.getElementById("submitFormBtn");
-    submitBtn.style.backgroundColor = "green";
+    submitBtn.style.backgroundColor = "rgb(16, 143, 16)";
     submitBtn.textContent = "Successful";
     setIsLoading(true);
     setTimeout(() => {
       submitBtn.textContent = "Join";
-      submitBtn.style.backgroundColor = "rgb(30 58 138)";
+      submitBtn.style.backgroundColor = "black";
       setIsLoading(false);
     }, 2300);
   };
   const ShowErrorMessage = () => {
     var submitBtn = document.getElementById("submitFormBtn");
     submitBtn.textContent = error || "Sorry, email could not be sent";
-    submitBtn.style.backgroundColor = "red";
+    submitBtn.style.backgroundColor = "rgb(158, 26, 26)";
     setIsLoading(true);
     setTimeout(() => {
       submitBtn.textContent = "Join";
-      submitBtn.style.backgroundColor = "rgb(30 58 138)";
+      submitBtn.style.backgroundColor = "black";
       setIsLoading(false);
     }, 2300);
   };
@@ -79,7 +79,7 @@ const WaitlistForm = () => {
           required
           onChange={(e) => setName(e.target.value)}
           placeholder="Enter your full name"
-          className="p-2 m-5 w-[35%] h-[2.5rem] border-2 border-gray-500 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-white rounded-md"
+          className="p-2 w-[35%] h-[2.5rem] border border-gray-300 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-black mb-3 shadow-md"
         />
         <input
           type="email"
@@ -89,16 +89,16 @@ const WaitlistForm = () => {
           required
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email address"
-          className="p-2 w-[35%] h-[2.5rem] border-2 border-gray-500 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-white rounded-md"
+          className="p-2 w-[35%] h-[2.5rem] border border-gray-300 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-black shadow-md"
         />
         <button
-          className="p-2 h-[2.5rem] px-3 bg-blue-900 text-white m-3"
+          className="p-2 h-[2.5rem] px-3 bg-black text-white m-3"
           type="submit"
           id="submitFormBtn"
           disabled={isLoading}
           onClick={handleSubmit}
         >
-          <div className="flex items-center justify-center z-10 text-white bg-blue-900">
+          <div className="flex items-center justify-center z-10 text-white bg-black">
             Join
             {/* <img src={arrow} alt="arrow-right" className="w-5 ml-2" /> */}
           </div>
