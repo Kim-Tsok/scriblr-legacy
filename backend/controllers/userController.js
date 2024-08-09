@@ -3,26 +3,20 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const createToken = (_id) => {
-  return jwt.sign({ _id: _id }, process.env.SECRET, { expiresIn: "7d" });
+  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "7d" });
 };
 
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    console.log(`Attempting login for user: ${username}`);
     const user = await User.login(username, password);
-    console.log(`User retrieved:`, user);
-
-    if (!user) {
-      throw new Error("User not found");
-    }
-
     const token = createToken(user._id);
-    console.log(`Token created:`, token);
 
     res.status(200).json({
-      username,
+      _id: user._id,
+      username: user.username,
+      email: user.email,
       token,
     });
   } catch (error) {
@@ -31,7 +25,6 @@ const loginUser = async (req, res) => {
   }
 };
 
-// signup user
 const signupUser = async (req, res) => {
   const { firstName, lastName, username, email, password } = req.body;
 
@@ -46,7 +39,9 @@ const signupUser = async (req, res) => {
     const token = createToken(user._id);
 
     res.status(201).json({
-      username,
+      _id: user._id,
+      username: user.username,
+      email: user.email,
       token,
     });
   } catch (error) {
