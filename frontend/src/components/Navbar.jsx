@@ -32,16 +32,16 @@ const Navbar = () => {
           <ul className="flex items-center justify-center">
             <div className="hidden md:flex">
               <li className="mx-2">
-                <Link to="/discover">Books</Link>
+                <Link to="/discover/books">Books</Link>
               </li>
               <li className="mx-2">
-                <Link to="">Articles</Link>
+                <Link to="/discover/articles">Articles</Link>
               </li>
               <li className="mx-2">
-                <Link to="">Writers</Link>
+                <Link to="/p/writers">Writers</Link>
               </li>
               <li className="mx-2">
-                <Link to="">Publishers</Link>
+                <Link to="/p/publishers">Publishers</Link>
               </li>
               <li className="mx-2">|</li>
             </div>
