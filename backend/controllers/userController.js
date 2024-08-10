@@ -16,6 +16,7 @@ const loginUser = async (req, res) => {
     res.status(200).json({
       username: user.username,
       email: user.email,
+      avatarLink: user.avatarLink,
       token,
     });
   } catch (error) {
@@ -25,7 +26,8 @@ const loginUser = async (req, res) => {
 };
 
 const signupUser = async (req, res) => {
-  const { firstName, lastName, username, email, password } = req.body;
+  const { firstName, lastName, username, email, password, avatarLink } =
+    req.body;
 
   try {
     const user = await User.signup(
@@ -33,13 +35,15 @@ const signupUser = async (req, res) => {
       lastName,
       username,
       email,
-      password
+      password,
+      avatarLink
     );
     const token = createToken(user._id);
 
     res.status(201).json({
       username: user.username,
       email: user.email,
+      avatarLink: user.avatarLink,
       token,
     });
   } catch (error) {

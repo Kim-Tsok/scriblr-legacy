@@ -12,7 +12,7 @@ const Discover = () => {
     const fetchContents = async () => {
       setIsLoading(true);
       const response = await fetch(
-        "https://scriblr-backend.onrender.com/api/contents"
+        "https://scriblr-backend.onrender.com/api/books"
       );
       const json = await response.json();
 

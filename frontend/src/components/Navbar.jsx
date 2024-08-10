@@ -26,7 +26,9 @@ const Navbar = () => {
       <div className="w-full h-[3.2rem] p-3 flex items-center justify-between px-4 sm:px-9 text-black border-b-2 border-zinc fixed bg-white z-10 mb-10">
         <Link className="flex items-center" to="/discover">
           <img src={logo} alt="logo" className="w-5 h-5 mr-1" />
-          <h1 className="font-bold text-xl sm:text-2xl font-mono">Scriblr</h1>
+          <h1 className="font-bold text-xl sm:text-2xl font-mono max-[300px]:hidden">
+            Scriblr
+          </h1>
         </Link>
         <div className="flex font-mono">
           <ul className="flex items-center justify-center">
@@ -123,22 +125,22 @@ const Navbar = () => {
         <div className="fixed h-screen flex justify-center items-center text-center text-3xl leading-[3rem] top-[3.2rem] left-0 right-0 bg-white border-b-2 border-zinc z-20 md:hidden">
           <ul className="py-2">
             <li className="px-4 py-2">
-              <Link to="/discover" onClick={toggleMenu}>
+              <Link to="/discover/books" onClick={toggleMenu}>
                 Books
               </Link>
             </li>
             <li className="px-4 py-2">
-              <Link to="" onClick={toggleMenu}>
+              <Link to="/discover/books" onClick={toggleMenu}>
                 Articles
               </Link>
             </li>
             <li className="px-4 py-2">
-              <Link to="" onClick={toggleMenu}>
+              <Link to="/discover/books" onClick={toggleMenu}>
                 Writers
               </Link>
             </li>
             <li className="px-4 py-2">
-              <Link to="" onClick={toggleMenu}>
+              <Link to="/discover/books" onClick={toggleMenu}>
                 Publishers
               </Link>
             </li>

@@ -8,17 +8,52 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let avatar = "";
   const { signup, error, isLoading } = useSignup();
   const navigate = useNavigate();
 
+  const assignAvatar = () => {
+    const avatarNum = Math.floor(Math.random() * 6);
+    const aL1 = "https://res.cloudinary.com/1";
+    const aL2 = "https://res.cloudinary.com/2";
+    const aL3 = "https://res.cloudinary.com/3";
+    const aL4 = "https://res.cloudinary.com/4";
+    const aL5 = "https://res.cloudinary.com/5";
+    const aL6 = "https://res.cloudinary.com/6";
+
+    let selectedAvatar = "";
+
+    if (avatarNum == 0) {
+      selectedAvatar = aL1;
+    } else if (avatarNum == 1) {
+      selectedAvatar = aL2;
+    } else if (avatarNum == 2) {
+      selectedAvatar = aL3;
+    } else if (avatarNum == 3) {
+      selectedAvatar = aL4;
+    } else if (avatarNum == 4) {
+      selectedAvatar = aL5;
+    } else if (avatarNum == 5) {
+      selectedAvatar = aL6;
+    } else {
+      selectedAvatar = aL1;
+    }
+
+    avatar = selectedAvatar;
+  };
   const handleGoogleSignIn = () => {
     window.location.href = "/auth/google";
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await signup(firstName, lastName, username, email, password);
-    navigate("/discover");
+    try {
+      assignAvatar();
+      await signup(firstName, lastName, username, email, password, avatar);
+      navigate("/discover");
+    } catch (error) {
+      navigate("/signup");
+    }
   };
   return (
     <>

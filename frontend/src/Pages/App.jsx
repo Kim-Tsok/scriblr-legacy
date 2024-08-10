@@ -23,7 +23,7 @@ export default function App() {
     <>
       <Router>
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </Router>
@@ -45,7 +45,7 @@ export default function App() {
           />
           <Route path="/discover/books/d/:id" element={<BookDetails />} />
           <Route path="/termsofservice" element={<TermsOfService />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/:id/*" element={<NotFound />} />
         </Routes>
       </Router>
     </>

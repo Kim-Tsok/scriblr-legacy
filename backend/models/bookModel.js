@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const contentSchema = new Schema(
+const bookSchema = new Schema(
   {
     title: {
       type: String,
@@ -12,9 +12,16 @@ const contentSchema = new Schema(
       type: String,
       required: true,
     },
-    cover: { type: Object, required: true },
+    cover: {
+      type: Object,
+      required: true,
+    },
+    author: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("content", contentSchema);
+module.exports = mongoose.model("book", bookSchema);

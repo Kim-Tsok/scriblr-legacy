@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
 import { useContentsContext } from "../hooks/useContentContext";
 import ReactQuill from "react-quill";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +17,8 @@ const ContentForm = () => {
   const [error, setError] = useState(null);
 
   const [file, setFile] = useState(null);
+
+  const { user } = useAuthContext();
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -79,6 +82,7 @@ const ContentForm = () => {
         title,
         about,
         cover: cover,
+        author: user?.username,
       })
     );
   };

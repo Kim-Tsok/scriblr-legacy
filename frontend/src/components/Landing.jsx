@@ -7,12 +7,12 @@ import linkedin from "/linkedin-in.svg";
 
 const Landing = () => {
   return (
-    <div className="h-screen text-black bg-white">
-      <div className="w-screen flex items-center justify-center h-full -mt-[4rem] text-black flex-col overflow-y-clip">
-        <h1 className="text-[30px] font-bold max-sm:text-[24px] max-md:text-[27px] text-black">
+    <div className="h-screen dark:text-black dark:bg-white bg-black text-white">
+      <div className="w-screen flex items-center justify-center h-full -mt-[4rem] flex-col overflow-y-clip">
+        <h1 className="text-[30px] font-bold max-sm:text-[24px] max-md:text-[27px]">
           It only takes one line
         </h1>
-        <p className="w-[50%] m-2 text-center max-md:w-[87%] max-sm:text-sm text-black">
+        <p className="w-[50%] m-2 text-center max-md:w-[87%] max-sm:text-sm">
           Scriblr is a decentralized hub for writers, publisher and readers
           where you hire and be hired, read and be read, find and be found.
           Where Books, articles, scripts and other content are ranked on generic

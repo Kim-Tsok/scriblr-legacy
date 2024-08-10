@@ -6,7 +6,14 @@ export const useSignup = () => {
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
 
-  const signup = async (firstName, lastName, username, email, password) => {
+  const signup = async (
+    firstName,
+    lastName,
+    username,
+    email,
+    password,
+    avatarLink
+  ) => {
     setIsLoading(true);
     setError(null);
 
@@ -21,6 +28,7 @@ export const useSignup = () => {
           username,
           email,
           password,
+          avatarLink,
         }),
       }
     );

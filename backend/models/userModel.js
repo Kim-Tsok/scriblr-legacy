@@ -26,6 +26,12 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  avatar: {
+    type: Object,
+  },
+  avatarLink: {
+    type: String,
+  },
 });
 
 // static signup method
@@ -34,7 +40,8 @@ userSchema.statics.signup = async function (
   lastName,
   username,
   email,
-  password
+  password,
+  avatarLink
 ) {
   // validation
   if (!email || !password) {
@@ -61,6 +68,7 @@ userSchema.statics.signup = async function (
     username,
     email,
     password: hash,
+    avatarLink,
   });
 
   return user;

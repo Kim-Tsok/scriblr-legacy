@@ -8,9 +8,12 @@ const WaitlistForm = () => {
   const [error, setError] = useState(null);
   const submitBtn = document.getElementById("submitFormBtn");
   const waitlist = { email, name };
-
+  let num = 0;
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    num++;
+
     setIsLoading(true);
     const waitlist = { email, name };
     try {
@@ -49,7 +52,7 @@ const WaitlistForm = () => {
     submitBtn.textContent = "Successful";
     setIsLoading(true);
     setTimeout(() => {
-      submitBtn.textContent = "Join";
+      submitBtn.textContent = "Join the waitlist";
       submitBtn.style.backgroundColor = "black";
       setIsLoading(false);
     }, 2300);
@@ -58,13 +61,15 @@ const WaitlistForm = () => {
     var submitBtn = document.getElementById("submitFormBtn");
     submitBtn.textContent = error || "Sorry, email could not be sent";
     submitBtn.style.backgroundColor = "rgb(158, 26, 26)";
+    console.log(num);
     setIsLoading(true);
     setTimeout(() => {
-      submitBtn.textContent = "Join";
+      submitBtn.textContent = "Join the waitlist";
       submitBtn.style.backgroundColor = "black";
       setIsLoading(false);
     }, 2300);
   };
+
   return (
     <>
       <form
@@ -79,7 +84,7 @@ const WaitlistForm = () => {
           required
           onChange={(e) => setName(e.target.value)}
           placeholder="Enter your full name"
-          className="p-2 w-[35%] h-[2.5rem] border border-gray-300 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-black mb-3 shadow-md"
+          className="p-2 w-[35%] h-[2.5rem] border border-gray-200 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-black mb-3 shadow-md"
         />
         <input
           type="email"
@@ -89,7 +94,7 @@ const WaitlistForm = () => {
           required
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email address"
-          className="p-2 w-[35%] h-[2.5rem] border border-gray-300 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-black shadow-md"
+          className="p-2 w-[35%] h-[2.5rem] border border-gray-200 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-black shadow-md"
         />
         <button
           className="p-2 h-[2.5rem] px-3 bg-black text-white m-3"
@@ -99,7 +104,7 @@ const WaitlistForm = () => {
           onClick={handleSubmit}
         >
           <div className="flex items-center justify-center z-10 text-white bg-black">
-            Join
+            Join the waitlist
             {/* <img src={arrow} alt="arrow-right" className="w-5 ml-2" /> */}
           </div>
         </button>

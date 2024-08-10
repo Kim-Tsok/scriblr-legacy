@@ -12,10 +12,10 @@ const BookDetails = () => {
     data: content,
     error,
     isPending,
-  } = useFetch("https://scriblr-backend.onrender.com/api/contents/" + id);
+  } = useFetch("https://scriblr-backend.onrender.com/api/books/" + id);
 
   const handleClick = () => {
-    fetch("https://scriblr-backend.onrender.com/api/contents/" + id, {
+    fetch("https://scriblr-backend.onrender.com/api/books/" + id, {
       method: "DELETE",
     }).then(() => {
       navigate("/discover");
