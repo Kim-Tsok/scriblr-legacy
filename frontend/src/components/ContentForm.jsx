@@ -13,10 +13,10 @@ const ContentForm = () => {
   const [title, setTitle] = useState("");
   const [about, setAbout] = useState("");
   const [cover, setCover] = useState("");
+  const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState("No file chosen");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const [file, setFile] = useState(null);
 
   const { user } = useAuthContext();
 
@@ -58,6 +58,17 @@ const ContentForm = () => {
     }
   };
 
+  const onFileChange = (e) => {
+    setError(""); // Reset error message when a new file is selected
+    const chosenFile = e.target.files[0];
+    if (chosenFile) {
+      setFile(chosenFile);
+      setFileName(chosenFile.name);
+    } else {
+      setFile(null);
+      setFileName("No file chosen");
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isLoading) return;
@@ -65,26 +76,21 @@ const ContentForm = () => {
     formData.append("book", file);
 
     try {
-      await axios.post("/api/books/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      dispatch(
+        contentsCreate({
+          title,
+          about,
+          cover: cover,
+          author: user?.username,
+          file: file,
+        })
+      );
       // Handle success
       document.getElementById("form").style.display = "none";
     } catch (error) {
       document.getElementById("main").style.display = "flex";
     }
     setIsLoading(true);
-
-    dispatch(
-      contentsCreate({
-        title,
-        about,
-        cover: cover,
-        author: user?.username,
-      })
-    );
   };
 
   const handleClose = (e) => {
@@ -168,14 +174,8 @@ const ContentForm = () => {
                 onChange={handleContentImageUpload}
                 className="p-1 rounded-md border-2 border-zinc-500"
               />
-              {/* <label>Book:</label>
-              <input
-                type="file"
-                accept=".pdf, .docx"
-                required
-                onChange={handleFileChange}
-                className="p-1 rounded-md border-2 border-zinc-500"
-              /> */}
+              <label>Book:</label>
+              <input type="file" onChange={onFileChange} accept=".pdf" />
             </div>
 
             <div className="bg-white p-5 text-center pr-0 max-md:hidden">

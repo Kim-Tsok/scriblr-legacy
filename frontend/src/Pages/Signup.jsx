@@ -124,7 +124,7 @@ const Signup = () => {
               login
             </Link>
           </p>
-          <p className="text-center font-bold my-2">-or-</p>
+          {/* <p className="text-center font-bold my-2">-or-</p>
           <button
             type="submit"
             className="p-2 h-[2.5rem] px-3 bg-gradient-to-b from-gray-200 to-neutral-300 text-black  text-center border-2 border-gray-300"
@@ -132,7 +132,7 @@ const Signup = () => {
             onSubmit={handleGoogleSignIn}
           >
             Google
-          </button>
+          </button> */}
           {error && (
             <div className="p-2 border-2 border-red-700 bg-red-200 text-red-600 mt-2">
               {error}

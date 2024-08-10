@@ -20,6 +20,12 @@ const bookSchema = new Schema(
       type: String,
       required: true,
     },
+    filename: { type: String, required: false },
+    fileId: { type: Schema.Types.ObjectId, required: false }, // Reference to GridFS file
+    filepath: { type: String, required: false }, // Optional: If you're storing files externally or need a path
+    filetype: { type: String, required: false },
+    size: { type: Number, required: false },
+    uploadDate: { type: Date, default: Date.now },
   },
   { timestamps: true }
 );

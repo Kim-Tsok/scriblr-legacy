@@ -13,7 +13,7 @@ export const contentsFetch = createAsyncThunk(
   "contents/contentsFetch",
   async () => {
     try {
-      const response = await axios.get(`${url}/contents`);
+      const response = await axios.get(`${url}/books`);
 
       return response.data;
     } catch (error) {
@@ -26,11 +26,7 @@ export const contentsCreate = createAsyncThunk(
   "contents/contentsCreate",
   async (values, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `${url}/contents`,
-        values,
-        setHeaders()
-      );
+      const response = await axios.post(`${url}/books`, values, setHeaders());
       return response.data;
     } catch (error) {
       console.log("Error details:", error.response || error);

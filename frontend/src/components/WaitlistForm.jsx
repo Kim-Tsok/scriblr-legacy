@@ -61,7 +61,6 @@ const WaitlistForm = () => {
     var submitBtn = document.getElementById("submitFormBtn");
     submitBtn.textContent = error || "Sorry, email could not be sent";
     submitBtn.style.backgroundColor = "rgb(158, 26, 26)";
-    console.log(num);
     setIsLoading(true);
     setTimeout(() => {
       submitBtn.textContent = "Join the waitlist";
@@ -97,13 +96,13 @@ const WaitlistForm = () => {
           className="p-2 w-[35%] h-[2.5rem] border border-gray-200 outline-none max-md:w-[60%] max-sm:w-[78%] bg-transparent text-black shadow-md"
         />
         <button
-          className="p-2 h-[2.5rem] px-3 bg-black text-white m-3"
+          className="p-2 h-[2.5rem] px-3 bg-black text-white m-4"
           type="submit"
           id="submitFormBtn"
           disabled={isLoading}
           onClick={handleSubmit}
         >
-          <div className="flex items-center justify-center z-10 text-white bg-black">
+          <div className="flex items-center justify-center z-10 text-white bg-black ">
             Join the waitlist
             {/* <img src={arrow} alt="arrow-right" className="w-5 ml-2" /> */}
           </div>
