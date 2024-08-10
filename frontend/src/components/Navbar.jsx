@@ -52,7 +52,7 @@ const Navbar = () => {
                 <div className="dropdown dropdown-hover dropdown-end">
                   <div tabIndex={0}>
                     <img
-                      src={avatar}
+                      src={user?.avatarLink}
                       className="rounded-full w-7 h-7 items-center object-cover"
                       alt="User avatar"
                     />
