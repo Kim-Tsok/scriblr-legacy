@@ -9,11 +9,14 @@ const requireAuth = async (req, res, next) => {
     return res.status(401).json({ error: "Authorization token required" });
   }
 
-  const token = authorization.split("")[1];
+  // Fix: Use split(' ') instead of split('')
+  const token = authorization.split(" ")[1];
 
   try {
+    // Verify the token
     const { _id } = jwt.verify(token, process.env.SECRET);
 
+    // Find the user and attach to the request
     req.user = await User.findOne({ _id }).select("_id");
     next();
   } catch (error) {
