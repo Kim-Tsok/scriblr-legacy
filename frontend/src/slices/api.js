@@ -4,7 +4,7 @@ export const setHeaders = () => {
   const headers = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   };
 
