@@ -13,7 +13,7 @@ export const contentsFetch = createAsyncThunk(
   "contents/contentsFetch",
   async () => {
     try {
-      const response = await axios.post(`${url}/contents`);
+      const response = await axios.post(`${url}/books`);
 
       return response.data;
     } catch (error) {
