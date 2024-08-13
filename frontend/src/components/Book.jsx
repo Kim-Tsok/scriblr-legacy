@@ -18,7 +18,7 @@ const Book = ({ content }) => {
                 {content.title}
               </p>
               <p className="text-left text-sm text-ellipsis overflow-hidden whitespace-nowrap text-gray-600">
-                written by {content.author}
+                written by {content?.author}
               </p>
             </div>
           </div>

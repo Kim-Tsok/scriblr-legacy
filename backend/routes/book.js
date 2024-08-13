@@ -7,7 +7,6 @@ const {
   deleteBook,
   updateBook,
 } = require("../controllers/bookController");
-const requireAuth = require("../middleware/requireAuth");
 const router = express.Router();
 router.use(cors());
 // GET all Books
@@ -16,8 +15,7 @@ router.get("/", cors(), getBooks);
 // GET a single Book
 router.get("/:id", cors(), getBook);
 
-// require auth for routes below
-router.use(requireAuth);
+
 // POST a new Book
 router.post("/", cors(), createBook);
 
