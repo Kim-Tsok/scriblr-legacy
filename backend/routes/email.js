@@ -1,11 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const {
-  createEmail,
-  getEmails,
-  getEmail,
-  deleteEmail,
-} = require("../controllers/emailController");
+const { createEmail, getEmails, getEmail, deleteEmail } =
+  require("../controllers/emailController").default;
 
 const router = express.Router();
 router.use(cors());

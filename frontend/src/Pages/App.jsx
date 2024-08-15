@@ -8,7 +8,6 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import AppRouter from "./AppRouter";
 import Navbar from "../components/Navbar";
 import Signup from "./Signup";
 import Login from "./Login";
@@ -16,6 +15,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import TermsOfService from "./Legal/TermsOfService";
 import NotFound from "./NotFound";
+import ContentForm from "../components/ContentForm";
 
 export default function App() {
   const { user } = useAuthContext();
@@ -46,6 +46,7 @@ export default function App() {
           <Route path="/discover/books/d/:id" element={<BookDetails />} />
           <Route path="/termsofservice" element={<TermsOfService />} />
           <Route path="/:id/*" element={<NotFound />} />
+          <Route path="/create" element={<ContentForm />} />
         </Routes>
       </Router>
     </>

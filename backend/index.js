@@ -1,23 +1,21 @@
 require("dotenv").config();
+import express, { json, urlencoded, static as static_ } from "express";
 
-const express = require("express");
-const bodyParser = require("body-parser");
-const bookRoutes = require("./routes/book");
-const emailRoutes = require("./routes/email");
-const userRoutes = require("./routes/user");
-const mongoose = require("mongoose");
-const cors = require("cors");
+import { json as _json } from "body-parser";
+import { connect } from "mongoose";
+import cors from "cors";
+// Routes imports
+import bookRoutes from "./routes/book";
+import emailRoutes from "./routes/email";
+import userRoutes from "./routes/user";
 
 const app = express();
 
-// CORS middleware (should be one of the first middleware)
+// CORS middleware
 const allowedOrigins = ["https://scriblr.vercel.app", "http://localhost:5173"];
-
 app.use(
   cors({
     origin: function (origin, callback) {
-      // allow requests with no origin
-      // (like mobile apps or curl requests)
       if (!origin) return callback(null, true);
       if (allowedOrigins.indexOf(origin) === -1) {
         let msg =
@@ -34,10 +32,10 @@ app.use(
 );
 
 // Body parser middleware
-app.use(bodyParser.json());
+app.use(_json());
 
-app.use(express.json({ limit: "100mb" }));
-app.use(express.urlencoded({ limit: "100mb", extended: false }));
+app.use(json({ limit: "1024mb" }));
+app.use(urlencoded({ limit: "1024mb", extended: false }));
 // Logging middleware
 app.use((req, res, next) => {
   console.log(req.path, req.method);
@@ -48,14 +46,13 @@ app.use((req, res, next) => {
 app.use("/api/books", bookRoutes);
 app.use("/api/emails", emailRoutes);
 app.use("/api/user", userRoutes);
-// Serve images folder as static
-app.use("/books", express.static(path.join(__dirname, "books")));
 
-app.use(express.static(path.join(__dirname, "..", "build")));
+// Serve images folder as static
+app.use("/books", static_(path.join(__dirname, "books")));
+app.use(static_(path.join(__dirname, "..", "build")));
 
 // Connect to db
-mongoose
-  .connect(process.env.MONGO_URI)
+connect(process.env.MONGO_URI)
   .then(() => {
     // Listen for requests
     app.listen(process.env.PORT, () => {

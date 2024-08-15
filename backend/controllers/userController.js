@@ -1,9 +1,9 @@
-const User = require("../models/userModel");
-const jwt = require("jsonwebtoken");
+import User from "../models/userModel";
+import { sign } from "jsonwebtoken";
 require("dotenv").config();
 
 const createToken = (_id) => {
-  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "7d" });
+  return sign({ _id }, process.env.SECRET, { expiresIn: "7d" });
 };
 
 const loginUser = async (req, res) => {
@@ -52,4 +52,4 @@ const signupUser = async (req, res) => {
   }
 };
 
-module.exports = { signupUser, loginUser };
+export default { signupUser, loginUser };

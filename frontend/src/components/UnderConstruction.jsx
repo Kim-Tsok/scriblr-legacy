@@ -10,7 +10,7 @@ const UnderConstruction = () => {
         to="/"
         className="p-2 h-[2.5rem] px-3 bg-blue-900 text-white max-md:m-3"
       >
-        Go Home
+        Go Home{" "}
       </Link>
     </div>
   );
