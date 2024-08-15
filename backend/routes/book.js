@@ -1,8 +1,13 @@
-const express = require("express");
-const cors = require("cors");
-const { getBooks, getBook, createBook, deleteBook, updateBook } =
-  require("../controllers/bookController").default;
-const router = express.Router();
+import { Router } from "express";
+import cors from "cors";
+import {
+  getBooks,
+  getBook,
+  createBook,
+  deleteBook,
+  updateBook,
+} from "../controllers/bookController";
+const router = Router();
 router.use(cors());
 // GET all Books
 router.get("/", cors(), getBooks);
@@ -18,4 +23,4 @@ router.delete("/:id", deleteBook);
 
 // UPDATE a new Book
 router.patch("/:id", updateBook);
-module.exports = router;
+export default router;
