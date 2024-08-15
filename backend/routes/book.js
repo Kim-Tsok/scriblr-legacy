@@ -10,14 +10,13 @@ const {
 const router = express.Router();
 router.use(cors());
 // GET all Books
-router.get("/", cors(), getBooks);
+router.get("/", getBooks);
 
 // GET a single Book
-router.get("/:id", cors(), getBook);
-
+router.get("/:id", getBook);
 
 // POST a new Book
-router.post("/", cors(), createBook);
+router.post("/", createBook);
 
 // DELETE a new Book
 router.delete("/:id", deleteBook);
