@@ -7,15 +7,25 @@ import {
   Route,
   Routes,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Signup from "./Signup";
 import Login from "./Login";
-import { AuthContext } from "../context/AuthContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import WaitlistNavbar from "../components/WaitlistNavbar";
 import TermsOfService from "./Legal/TermsOfService";
 import NotFound from "./NotFound";
 import ContentForm from "../components/ContentForm";
+
+function Layout({ navbar, children }) {
+  return (
+    <div>
+      {navbar}
+      <main>{children}</main>
+    </div>
+  );
+}
 
 export default function App() {
   const { user } = useAuthContext();
@@ -28,6 +38,7 @@ export default function App() {
         </Routes>
       </Router>
       <Router>
+        {}
         <Navbar />
         <Routes>
           <Route

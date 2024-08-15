@@ -1,4 +1,4 @@
-import Navbar from "../components/WaitlistNavbar";
+import WaitlistNavbar from "../components/WaitlistNavbar";
 import { React, useEffect, useState } from "react";
 import Landing from "../components/Landing";
 import Loader from "../components/Loader";
@@ -34,7 +34,7 @@ const home = () => {
           <div>Error: {error.message}</div>
         ) : (
           <>
-            <Navbar />
+            <WaitlistNavbar />
             <Landing />
           </>
         )}

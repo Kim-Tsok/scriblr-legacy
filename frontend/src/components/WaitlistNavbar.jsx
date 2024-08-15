@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "/logo.svg";
 
-const Navbar = () => {
+const WaitlistNavbar = () => {
   return (
     <div className="w-screen h-[4rem] p-3 flex items-center justify-between text-white dark:text-black px-9 max-sm:px-5">
       <div className="flex items-center">
@@ -28,4 +28,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default WaitlistNavbar;

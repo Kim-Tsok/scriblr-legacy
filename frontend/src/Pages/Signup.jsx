@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
 import { Link, useNavigate } from "react-router-dom";
+import AssignAvatar from "../components/signup/login/AssignAvatar";
+import PrimaryBtn from "../components/PrimaryBtn";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
@@ -8,53 +10,15 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let avatar = "";
   const { signup, error, isLoading } = useSignup();
   const navigate = useNavigate();
+  const avatar = "";
 
-  const assignAvatar = () => {
-    const avatarNum = Math.floor(Math.random() * 6);
-    const aL1 =
-      "https://res.cloudinary.com/duvliswox/image/upload/v1723327866/Avatars/avatar1_vt9h4x.png";
-    const aL2 =
-      "https://res.cloudinary.com/duvliswox/image/upload/v1723327866/Avatars/avatar2_rfluvc.png";
-    const aL3 =
-      "https://res.cloudinary.com/duvliswox/image/upload/v1723327866/Avatars/avatar3_teu6ni.png";
-    const aL4 =
-      "https://res.cloudinary.com/duvliswox/image/upload/v1723327866/Avatars/avatar4_ulabs7.png";
-    const aL5 =
-      "https://res.cloudinary.com/duvliswox/image/upload/v1723327866/Avatars/avatar5_w2t1vx.png";
-    const aL6 =
-      "https://res.cloudinary.com/duvliswox/image/upload/v1723327866/Avatars/avatar6_lyhmcl.png";
-
-    let selectedAvatar = "";
-
-    if (avatarNum == 0) {
-      selectedAvatar = aL1;
-    } else if (avatarNum == 1) {
-      selectedAvatar = aL2;
-    } else if (avatarNum == 2) {
-      selectedAvatar = aL3;
-    } else if (avatarNum == 3) {
-      selectedAvatar = aL4;
-    } else if (avatarNum == 4) {
-      selectedAvatar = aL5;
-    } else if (avatarNum == 5) {
-      selectedAvatar = aL6;
-    } else {
-      selectedAvatar = aL1;
-    }
-
-    avatar = selectedAvatar;
-  };
-  const handleGoogleSignIn = () => {
-    window.location.href = "/auth/google";
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      assignAvatar();
+      AssignAvatar(avatar);
       await signup(firstName, lastName, username, email, password, avatar);
       navigate("/discover");
     } catch (error) {
@@ -119,26 +83,21 @@ const Signup = () => {
           />
           <button
             type="submit"
-            className="p-2 h-[2.5rem] px-3 bg-blue-900 text-white my-3 text-center"
+            className={`p-2 h-[2.5rem] px-3 bg-blue-900 text-white my-3 text-center`}
             disabled={isLoading}
           >
             Signup
           </button>
           <p className="text-center text-[16px]">
             Already have an account?{" "}
-            <Link to="/login" className="text-blue-800 underline">
+            <Link
+              to="/login"
+              className="text-blue-800 underline"
+              disabled="true"
+            >
               login
             </Link>
           </p>
-          {/* <p className="text-center font-bold my-2">-or-</p>
-          <button
-            type="submit"
-            className="p-2 h-[2.5rem] px-3 bg-gradient-to-b from-gray-200 to-neutral-300 text-black  text-center border-2 border-gray-300"
-            disabled={isLoading}
-            onSubmit={handleGoogleSignIn}
-          >
-            Google
-          </button> */}
           {error && (
             <div className="p-2 border-2 border-red-700 bg-red-200 text-red-600 mt-2">
               {error}
