@@ -1,7 +1,6 @@
-const Book = require("../models/bookModel");
-const cloudinary = require("../cloudinary");
-const mongoose = require("mongoose");
-const multer = require("multer");
+import Book from "../models/bookModel";
+import cloudinary from "../cloudinary";
+import { Types } from "mongoose";
 
 //get all books
 const getBooks = async (req, res) => {
@@ -14,7 +13,7 @@ const getBooks = async (req, res) => {
 const getBook = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such item" });
   }
   const book = await Book.findById(id);
@@ -57,7 +56,7 @@ const createBook = async (req, res) => {
 const deleteBook = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such item" });
   }
 
@@ -74,7 +73,7 @@ const deleteBook = async (req, res) => {
 const updateBook = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such item" });
   }
 
@@ -87,7 +86,7 @@ const updateBook = async (req, res) => {
   res.status(200).json(book);
 };
 
-module.exports = {
+export default {
   getBooks,
   getBook,
   createBook,

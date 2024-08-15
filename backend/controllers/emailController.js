@@ -1,11 +1,11 @@
-const Email = require("../models/emailModel");
-const mongoose = require("mongoose");
+import Email from "../models/emailModel";
+import { Types } from "mongoose";
 
 // get a single email
 const getEmail = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such item" });
   }
   const email = await Email.findById(id);
@@ -26,12 +26,20 @@ const getEmails = async (req, res) => {
 const createEmail = async (req, res) => {
   const { email, name } = req.body;
 
-  // Basic email validation (consider using a more robust validation library)
+  // Validations
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({ error: "Invalid email format" });
   }
+  if (!email || !name) {
+    return res.status(400).json({ error: "All fields must be filled" });
+  }
+  const exists = await Email.findOne({ email });
+  if (exists) {
+    throw Error("Email already joint");
+  }
 
+  // Submitting name & email
   try {
     const waitlist = await Email.create({ email, name });
     res.status(200).json(waitlist);
@@ -44,7 +52,7 @@ const createEmail = async (req, res) => {
 const deleteEmail = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such item" });
   }
 
@@ -57,7 +65,7 @@ const deleteEmail = async (req, res) => {
   res.status(200).json(email);
 };
 
-module.exports = {
+export default {
   getEmail,
   getEmails,
   createEmail,

@@ -1,12 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const {
-  getBooks,
-  getBook,
-  createBook,
-  deleteBook,
-  updateBook,
-} = require("../controllers/bookController");
+const { getBooks, getBook, createBook, deleteBook, updateBook } =
+  require("../controllers/bookController").default;
 const router = express.Router();
 router.use(cors());
 // GET all Books
@@ -14,7 +9,6 @@ router.get("/", cors(), getBooks);
 
 // GET a single Book
 router.get("/:id", cors(), getBook);
-
 
 // POST a new Book
 router.post("/", cors(), createBook);

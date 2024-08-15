@@ -76,7 +76,7 @@ const ContentForm = () => {
     formData.append("book", file);
 
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       dispatch(
         contentsCreate({
           title,
