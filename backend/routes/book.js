@@ -5,7 +5,7 @@ const { getBooks, getBook, createBook, deleteBook, updateBook } =
 const router = express.Router();
 router.use(cors());
 // GET all Books
-router.get("/", cors(), getBooks);
+router.get("/", getBooks);
 
 // GET a single Book
 router.get("/:id", cors(), getBook);
