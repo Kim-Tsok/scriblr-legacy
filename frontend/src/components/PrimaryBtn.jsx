@@ -1,6 +1,7 @@
-const PrimaryBtn = (content, width) => {
+const PrimaryBtn = ({ content, width, ...info }) => {
   return (
     <button
+      {...info}
       className={`p-2 h-[2.5rem] px-3 bg-blue-900 text-white my-3 text-center ${width}`}
     >
       {content}
