@@ -13,6 +13,9 @@ const loginUser = async (req, res) => {
     const user = await User.login(username, password);
     const token = createToken(user._id);
 
+    localStorage.setItem("token", receivedToken);
+    console.log("Token set in localStorage:", localStorage.getItem("token"));
+
     res.status(200).json({
       username: user.username,
       email: user.email,

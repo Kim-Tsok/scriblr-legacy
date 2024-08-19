@@ -1,13 +1,18 @@
 export const url = "https://scriblr-backend.onrender.com/api";
 
 export const setHeaders = () => {
-  console.log(localStorage.getItem("token"));
-  const headers = {
+  const token = localStorage.getItem("token");
+  console.log("Token retrieved in setHeaders:", token);
+
+  if (!token) {
+    console.warn("No token found in localStorage");
+    // You might want to redirect to login page here
+  }
+
+  return {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: token ? `Bearer ${token}` : "",
     },
   };
-
-  return headers;
 };

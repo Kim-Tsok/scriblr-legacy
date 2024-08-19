@@ -50,7 +50,7 @@ app.use("/api/books", bookRoutes);
 app.use("/api/emails", emailRoutes);
 app.use("/api/user", userRoutes);
 
-// // Serve images folder as static
+// Serve images folder as static
 // app.use("/books", static_(path.join(__dirname, "books")));
 // app.use(static_(path.join(__dirname, "..", "build")));
 

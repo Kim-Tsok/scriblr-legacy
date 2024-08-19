@@ -26,7 +26,17 @@ export const contentsCreate = createAsyncThunk(
   "contents/contentsCreate",
   async (values, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${url}/books`, values, setHeaders());
+      // Add a small delay
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      const headers = setHeaders();
+      console.log("Request headers:", headers);
+
+      if (!headers.headers.Authorization) {
+        throw new Error("No authorization token available");
+      }
+
+      const response = await axios.post(`${url}/books`, values, headers);
       return response.data;
     } catch (error) {
       console.log("Error details:", error.response || error);
