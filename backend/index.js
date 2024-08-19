@@ -1,13 +1,16 @@
-require("dotenv").config();
+import dotenv from "dotenv";
+
+dotenv.config();
 import express, { json, urlencoded, static as static_ } from "express";
 
-import { json as _json } from "body-parser";
+import jsonPkg from "body-parser";
+const { json: _json } = jsonPkg;
 import { connect } from "mongoose";
 import cors from "cors";
 // Routes imports
-import bookRoutes from "./routes/book";
-import emailRoutes from "./routes/email";
-import userRoutes from "./routes/user";
+import bookRoutes from "./routes/contents/book.js";
+import emailRoutes from "./routes/email.js";
+import userRoutes from "./routes/user.js";
 
 const app = express();
 
@@ -47,9 +50,9 @@ app.use("/api/books", bookRoutes);
 app.use("/api/emails", emailRoutes);
 app.use("/api/user", userRoutes);
 
-// Serve images folder as static
-app.use("/books", static_(path.join(__dirname, "books")));
-app.use(static_(path.join(__dirname, "..", "build")));
+// // Serve images folder as static
+// app.use("/books", static_(path.join(__dirname, "books")));
+// app.use(static_(path.join(__dirname, "..", "build")));
 
 // Connect to db
 connect(process.env.MONGO_URI)

@@ -1,6 +1,7 @@
 import { Schema as _Schema, model } from "mongoose";
 import { genSalt, hash as _hash, compare } from "bcrypt";
-import { isEmail, isStrongPassword } from "validator";
+import validatorPkg from "validator";
+const { isEmail, isStrongPassword } = validatorPkg;
 
 const Schema = _Schema;
 const userSchema = new Schema({

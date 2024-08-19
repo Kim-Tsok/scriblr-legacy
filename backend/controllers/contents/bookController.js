@@ -1,5 +1,5 @@
-import Book from "../models/bookModel";
-import cloudinary from "../cloudinary";
+import Book from "../../models/contents/bookModel.js";
+import cloudinary from "../../cloudinary.js";
 import { Types } from "mongoose";
 
 //get all books
@@ -86,10 +86,4 @@ const updateBook = async (req, res) => {
   res.status(200).json(book);
 };
 
-export default {
-  getBooks,
-  getBook,
-  createBook,
-  deleteBook,
-  updateBook,
-};
+export { getBooks, getBook, createBook, deleteBook, updateBook };

@@ -1,6 +1,6 @@
-import User from "../models/userModel";
-import { sign } from "jsonwebtoken";
-require("dotenv").config();
+import User from "../models/userModel.js";
+import jwtPkg from "jsonwebtoken";
+const { sign } = jwtPkg;
 
 const createToken = (_id) => {
   return sign({ _id }, process.env.SECRET, { expiresIn: "7d" });

@@ -1,11 +1,14 @@
-const express = require("express");
-const cors = require("cors");
-const { createEmail, getEmails, getEmail, deleteEmail } =
-  require("../controllers/emailController").default;
+import { Router } from "express";
+import cors from "cors";
+import {
+  createEmail,
+  getEmails,
+  getEmail,
+  deleteEmail,
+} from "../controllers/emailController.js";
 
-const router = express.Router();
+const router = Router();
 router.use(cors());
-const mongoose = require("mongoose");
 
 // GET all emails
 router.get("/", cors(), getEmails);
@@ -18,4 +21,4 @@ router.get("/:id", cors(), getEmail);
 // DELETE a new content
 router.delete("/:id", deleteEmail);
 
-module.exports = router;
+export default router;

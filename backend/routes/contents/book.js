@@ -6,7 +6,7 @@ import {
   createBook,
   deleteBook,
   updateBook,
-} from "../controllers/bookController";
+} from "../../controllers/contents/bookController.js";
 const router = Router();
 router.use(cors());
 // GET all Books

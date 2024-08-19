@@ -1,4 +1,4 @@
-import Email from "../models/emailModel";
+import Email from "../models/emailModel.js";
 import { Types } from "mongoose";
 
 // get a single email
@@ -65,9 +65,4 @@ const deleteEmail = async (req, res) => {
   res.status(200).json(email);
 };
 
-export default {
-  getEmail,
-  getEmails,
-  createEmail,
-  deleteEmail,
-};
+export { getEmail, getEmails, createEmail, deleteEmail };
