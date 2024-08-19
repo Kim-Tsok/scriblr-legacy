@@ -35,7 +35,7 @@ const Signup = () => {
           <h3 className="text-2xl text-center font-bold text-blue-800 mb-4">
             Sign up
           </h3>
-          <div className="flex w-full mb-2 mr-4 max-md:flex-col">
+          <div className="flex w-full mb-2 max-md:flex-col">
             <div className="flex flex-col">
               <label>First Name:</label>
               <input
@@ -53,7 +53,7 @@ const Signup = () => {
                 onChange={(e) => setLastName(e.target.value)}
                 value={lastName}
                 placeholder="Doe"
-                className="border-2 border-neutral-600 bg-white outline-none rounded-md px-2 p-1 w-full "
+                className="border-2 border-neutral-600 bg-white outline-none rounded-md px-2 p-1 w-full"
               />
             </div>
           </div>

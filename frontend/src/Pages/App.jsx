@@ -17,6 +17,7 @@ import WaitlistNavbar from "../components/WaitlistNavbar";
 import TermsOfService from "./Legal/TermsOfService";
 import NotFound from "./NotFound";
 import ContentForm from "../components/ContentForm";
+import ArticlesPage from "../components/ArticlesPage";
 
 function Layout({ navbar, children }) {
   return (
@@ -54,6 +55,7 @@ export default function App() {
             path="/login"
             element={user ? <Navigate to="/discover" /> : <Login />}
           />
+          <Route path="/discover/articles" element={<ArticlesPage />} />
           <Route path="/discover/books/d/:id" element={<BookDetails />} />
           <Route path="/termsofservice" element={<TermsOfService />} />
           <Route path="/:id/*" element={<NotFound />} />
