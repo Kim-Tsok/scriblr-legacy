@@ -18,6 +18,7 @@ import TermsOfService from "./Legal/TermsOfService";
 import NotFound from "./NotFound";
 import ContentForm from "../components/ContentForm";
 import ArticlesPage from "../components/ArticlesPage";
+import CreateContent from "../components/CreateContent";
 
 function Layout({ navbar, children }) {
   return (
@@ -59,7 +60,7 @@ export default function App() {
           <Route path="/discover/books/d/:id" element={<BookDetails />} />
           <Route path="/termsofservice" element={<TermsOfService />} />
           <Route path="/:id/*" element={<NotFound />} />
-          <Route path="/create" element={<ContentForm />} />
+          <Route path="/create" element={<CreateContent />} />
         </Routes>
       </Router>
     </>

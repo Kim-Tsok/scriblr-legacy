@@ -3,6 +3,7 @@ import { useContentsContext } from "../hooks/useContentContext";
 import Book from "../components/Book";
 import ContentForm from "../components/ContentForm";
 import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 const Discover = () => {
   const [isLoading, setIsLoading] = useState("");
@@ -60,12 +61,14 @@ const Discover = () => {
               <Book key={content._id} content={content} cover={content.cover} />
             ))}
         </div>
-        <button
-          className="fixed right-0 bottom-0 m-7 bg-gray-300 rounded-full shadow-xl w-10 h-10 z-[100]"
-          onClick={handleOpen}
-        >
-          +
-        </button>
+        <div className="w-screen fixed h-10 bottom-0 z-10 flex items-center justify-center">
+          <Link
+            to="/create"
+            className="rounded-full fixed  bottom-0 m-7 z-10 p-2 px-3 bg-blue-800 text-white  font-mono md:hidden"
+          >
+            Create
+          </Link>
+        </div>
       </div>
     </>
   );

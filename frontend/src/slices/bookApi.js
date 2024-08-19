@@ -3,16 +3,16 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { url } from "./api";
 
 // Define a service using a base URL and expected endpoints
-export const contentsApi = createApi({
-  reducerPath: "contentsApi",
+export const booksApi = createApi({
+  reducerPath: "booksApi",
   baseQuery: fetchBaseQuery({ baseUrl: `${url}` }),
   endpoints: (builder) => ({
-    getAllContents: builder.query({
-      query: () => `contents`,
+    getAllBooks: builder.query({
+      query: () => `books`,
     }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetAllContentsQuery } = contentsApi;
+export const { useGetAllContentsQuery } = booksApi;

@@ -9,21 +9,18 @@ const initialState = {
   createStatus: null,
 };
 
-export const contentsFetch = createAsyncThunk(
-  "contents/contentsFetch",
-  async () => {
-    try {
-      const response = await axios.post(`${url}/books`);
+export const booksFetch = createAsyncThunk("books/booksFetch", async () => {
+  try {
+    const response = await axios.post(`${url}/books`);
 
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
+    return response.data;
+  } catch (error) {
+    console.log(error);
   }
-);
+});
 
-export const contentsCreate = createAsyncThunk(
-  "contents/contentsCreate",
+export const booksCreate = createAsyncThunk(
+  "books/booksCreate",
   async (values, { rejectWithValue }) => {
     try {
       // Add a small delay
@@ -45,34 +42,34 @@ export const contentsCreate = createAsyncThunk(
   }
 );
 
-const contentsSlice = createSlice({
-  name: "contents",
+const booksSlice = createSlice({
+  name: "books",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(contentsFetch.pending, (state) => {
+      .addCase(booksFetch.pending, (state) => {
         state.status = "pending";
       })
-      .addCase(contentsFetch.fulfilled, (state, action) => {
+      .addCase(booksFetch.fulfilled, (state, action) => {
         state.items = action.payload;
         state.status = "success";
       })
-      .addCase(contentsFetch.rejected, (state, action) => {
+      .addCase(booksFetch.rejected, (state, action) => {
         state.status = "rejected";
       })
-      .addCase(contentsCreate.pending, (state, action) => {
+      .addCase(booksCreate.pending, (state, action) => {
         state.createStatus = "pending";
       })
-      .addCase(contentsCreate.fulfilled, (state, action) => {
+      .addCase(booksCreate.fulfilled, (state, action) => {
         state.items.push(action.payload);
         state.createStatus = "success";
-        toast.success("content Created!");
+        toast.success("book Created!");
       })
-      .addCase(contentsCreate.rejected, (state, action) => {
+      .addCase(booksCreate.rejected, (state, action) => {
         state.createStatus = "rejected";
       });
   },
 });
 
-export default contentsSlice.reducer;
+export default booksSlice.reducer;

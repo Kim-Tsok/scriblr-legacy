@@ -6,19 +6,19 @@ import App from "./Pages/App";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 
-import contentsReducer, { contentsFetch } from "./slices/contentSlice";
-import { contentsApi } from "./slices/contentApi";
+import booksReducer, { booksFetch } from "./slices/bookSlice";
+import { booksApi } from "./slices/bookApi";
 
 const store = configureStore({
   reducer: {
-    contents: contentsReducer,
-    [contentsApi.reducerPath]: contentsApi.reducer,
+    contents: booksReducer,
+    [booksApi.reducerPath]: booksApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(contentsApi.middleware),
+    getDefaultMiddleware().concat(booksApi.middleware),
 });
 
-store.dispatch(contentsFetch());
+store.dispatch(booksFetch());
 
 import "./index.css";
 import { AuthContextProvider } from "./context/AuthContext.jsx";

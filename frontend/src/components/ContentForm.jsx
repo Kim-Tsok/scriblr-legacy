@@ -3,10 +3,9 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useContentsContext } from "../hooks/useContentContext";
 import ReactQuill from "react-quill";
 import { useDispatch, useSelector } from "react-redux";
-import { contentsCreate } from "../slices/contentSlice.js";
+import { booksCreate } from "../slices/bookSlice.js";
 import "react-quill/dist/quill.snow.css";
 import coverPreview from "/cover preview.png";
-import { url } from "../slices/api.js";
 import axios from "axios";
 
 const ContentForm = () => {
@@ -72,25 +71,26 @@ const ContentForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isLoading) return;
     const formData = new FormData();
-    formData.append("title", title);
-    formData.append("about", about);
-    formData.append("cover", cover);
-    formData.append("author", user?.username);
-    formData.append("file", file);
+    formData.append("book", file);
 
     try {
-      const response = await axios.post(`${url}/books`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      dispatch(
+        booksCreate({
+          title,
+          about,
+          cover: cover,
+          author: user?.username,
+          file: file,
+        })
+      );
       // Handle success
+      document.getElementById("form").style.display = "none";
     } catch (error) {
-      console.error("Upload error:", error);
-      setError("Upload failed. Please try again.");
+      document.getElementById("main").style.display = "flex";
     }
+    setIsLoading(true);
   };
 
   const handleClose = (e) => {

@@ -1,7 +1,8 @@
 export const url = "https://scriblr-backend.onrender.com/api";
 
 export const setHeaders = () => {
-  const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user")); // Parse the JSON string
+  const token = user.token;
   console.log("Token retrieved in setHeaders:", token);
 
   if (!token) {
