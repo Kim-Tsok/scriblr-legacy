@@ -9,6 +9,10 @@ const initialState = {
   createStatus: null,
 };
 
+// Axios configuration
+axios.defaults.maxContentLength = 50 * 1024 * 1024; // 50 MB
+axios.defaults.maxBodyLength = 50 * 1024 * 1024; // 50 MB
+
 export const booksCreate = createAsyncThunk(
   "books/booksCreate",
   async (values, { rejectWithValue }) => {
