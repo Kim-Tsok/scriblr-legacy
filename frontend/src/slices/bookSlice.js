@@ -13,6 +13,16 @@ const initialState = {
 axios.defaults.maxContentLength = 50 * 1024 * 1024; // 50 MB
 axios.defaults.maxBodyLength = 50 * 1024 * 1024; // 50 MB
 
+export const booksFetch = createAsyncThunk("books/booksFetch", async () => {
+  try {
+    const response = await axios.post(`${url}/books`);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 export const booksCreate = createAsyncThunk(
   "books/booksCreate",
   async (values, { rejectWithValue }) => {
