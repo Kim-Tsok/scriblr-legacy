@@ -104,7 +104,7 @@ const ContentForm = () => {
   const handleOpenNew = (e) => {
     e.preventDefault();
     document.getElementById("main").style.display = "flex";
-    document.getElementById("firstform").style.display = "none";
+    document.getElementById("firstForm").style.display = "none";
   };
   const handleBack = (e) => {
     e.preventDefault();
@@ -127,7 +127,7 @@ const ContentForm = () => {
             <div className="w-full flex items-end justify-end">
               <Link
                 className="text-center cursor-pointer text-sm bg-blue-800 text-white shadow-xl w-7 h-7"
-                to="discover/books"
+                to="/discover/books"
               >
                 X
               </Link>
