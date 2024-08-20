@@ -14,9 +14,6 @@ const Login = () => {
     await login(username, password);
     navigate("/discover");
   };
-  const handleGoogleSignIn = () => {
-    window.location.href = "/auth/google";
-  };
 
   return (
     <>

@@ -88,7 +88,6 @@ const Signup = () => {
           >
             Signup
           </button>
-          <PrimaryBtn content="Click me" width="w-full" />
           <p className="text-center text-[16px]">
             Already have an account?{" "}
             <Link

@@ -175,15 +175,18 @@ const ContentForm = () => {
                 {characterCount}/1024
               </label>
               <label>Cover:</label>
-              <input
-                type="file"
-                accept="image/*"
-                required
-                onChange={handleContentImageUpload}
-                className="p-1 rounded-md border-2 border-zinc-500"
-              />
-              <label>Book:</label>
-              <input type="file" onChange={onFileChange} accept=".pdf" />
+              <div className="p-1 rounded-md border-2  border-zinc-500">
+                Upload cover
+                <input
+                  type="file"
+                  accept="image/*"
+                  required
+                  onChange={handleContentImageUpload}
+                  className="w-full h-full z-10 opacity-0"
+                />
+                <label>Book:</label>
+                <input type="file" onChange={onFileChange} accept=".pdf" />
+              </div>
             </div>
 
             <div className="bg-white p-5 text-center pr-0 max-md:hidden">
