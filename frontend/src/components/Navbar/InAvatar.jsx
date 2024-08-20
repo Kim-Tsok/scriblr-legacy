@@ -1,5 +1,6 @@
 import { useLogout } from "../../hooks/useLogout";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { Link } from "react-router-dom";
 
 const InAvatar = () => {
   const { logout } = useLogout();

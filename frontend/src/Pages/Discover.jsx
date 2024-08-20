@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useContentsContext } from "../hooks/useContentContext";
 import Book from "../components/Book";
 import ContentForm from "../components/ContentForm";
-import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Discover = () => {
   const [isLoading, setIsLoading] = useState("");
   const { contents, dispatch } = useContentsContext();
+  const { user } = useAuthContext();
 
   useEffect(() => {
     const fetchContents = async () => {
@@ -61,10 +62,10 @@ const Discover = () => {
               <Book key={content._id} content={content} cover={content.cover} />
             ))}
         </div>
-        <div className="w-screen fixed h-10 bottom-0 z-10 flex items-center justify-center">
+        <div className="w-screen fixed h-10 bottom-0 flex items-center justify-center">
           <Link
             to="/create"
-            className="rounded-full fixed  bottom-0 m-7 z-10 p-2 px-3 bg-blue-800 text-white  font-mono md:hidden"
+            className="rounded-full fixed  bottom-0 m-7 text-lg p-2 px-3 bg-blue-800 text-white  font-mono md:hidden"
           >
             Create
           </Link>
