@@ -72,8 +72,6 @@ const ContentForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isLoading) return;
-    const formData = new FormData();
-    formData.append("book", file);
 
     try {
       dispatch(
@@ -82,15 +80,18 @@ const ContentForm = () => {
           about,
           cover: cover,
           author: user?.username,
-          file: file,
+          content: value, // Add the content from ReactQuill
         })
       );
       // Handle success
       document.getElementById("form").style.display = "none";
+      setIsLoading(false);
     } catch (error) {
+      console.error("Error submitting form:", error);
       document.getElementById("main").style.display = "flex";
+      setIsLoading(false);
+      setError("Failed to create book. Please try again.");
     }
-    setIsLoading(true);
   };
 
   const handleClose = (e) => {

@@ -23,7 +23,6 @@ export const booksCreate = createAsyncThunk(
   "books/booksCreate",
   async (values, { rejectWithValue }) => {
     try {
-      // Add a small delay
       await new Promise((resolve) => setTimeout(resolve, 100));
 
       const headers = setHeaders();
@@ -32,6 +31,13 @@ export const booksCreate = createAsyncThunk(
       if (!headers.headers.Authorization) {
         throw new Error("No authorization token available");
       }
+
+      // Validate that required fields are present
+      if (!values.title || !values.about || !values.cover || !values.content) {
+        throw new Error("Missing required fields");
+      }
+
+      console.log("Request payload:", values);
 
       const response = await axios.post(`${url}/books`, values, headers);
       return response.data;

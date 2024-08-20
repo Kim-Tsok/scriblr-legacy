@@ -27,7 +27,7 @@ const getBook = async (req, res) => {
 
 // create new book
 const createBook = async (req, res) => {
-  const { title, about, cover } = req.body;
+  const { title, about, cover, author, content } = req.body;
 
   try {
     if (cover) {
@@ -35,23 +35,26 @@ const createBook = async (req, res) => {
         upload_preset: "scriblr",
       });
       if (uploadRes) {
-        const book = new Content({
+        const book = new Book({
           title,
           about,
           cover: uploadRes,
+          author,
+          content,
         });
 
         const savedBook = await book.save();
 
         res.status(200).send(savedBook);
       }
+    } else {
+      throw new Error("Cover image is required");
     }
   } catch (error) {
     console.error("Error creating book:", error);
     res.status(400).json({ error: error.message });
   }
 };
-
 // delete a book
 const deleteBook = async (req, res) => {
   const { id } = req.params;
