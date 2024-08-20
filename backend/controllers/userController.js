@@ -41,6 +41,7 @@ const signupUser = async (req, res) => {
     const token = createToken(user._id);
 
     res.status(201).json({
+      firstName: user.firstName,
       username: user.username,
       email: user.email,
       avatarLink: user.avatarLink,
