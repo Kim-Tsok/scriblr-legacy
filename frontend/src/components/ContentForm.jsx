@@ -74,23 +74,30 @@ const ContentForm = () => {
     if (isLoading) return;
 
     try {
-      dispatch(
+      setIsLoading(true);
+      const result = await dispatch(
         booksCreate({
           title,
           about,
           cover: cover,
           author: user?.username,
-          content: value, // Add the content from ReactQuill
+          content: value,
         })
-      );
+      ).unwrap();
+
       // Handle success
       document.getElementById("form").style.display = "none";
-      setIsLoading(false);
+      // Reset form fields
+      setTitle("");
+      setAbout("");
+      setCover("");
+      setValue("");
     } catch (error) {
       console.error("Error submitting form:", error);
       document.getElementById("main").style.display = "flex";
-      setIsLoading(false);
       setError("Failed to create book. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
