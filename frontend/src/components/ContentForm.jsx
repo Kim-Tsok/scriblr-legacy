@@ -112,7 +112,7 @@ const ContentForm = () => {
   return (
     <>
       <form
-        className="w-screen h-screen items-center justify-center font-mono hidden z-50 fixed inset-0 bg-black backdrop-blur-sm bg-opacity-25"
+        className="w-screen h-screen items-center justify-center font-mono z-50 fixed inset-0 bg-black backdrop-blur-sm bg-opacity-25"
         id="form"
         onSubmit={handleFileSubmit}
       >

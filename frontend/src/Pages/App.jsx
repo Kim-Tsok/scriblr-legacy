@@ -61,6 +61,7 @@ export default function App() {
           <Route path="/termsofservice" element={<TermsOfService />} />
           <Route path="/:id/*" element={<NotFound />} />
           <Route path="/create" element={<CreateContent />} />
+          <Route path="/create/books" element={<ContentForm />} />
         </Routes>
       </Router>
     </>

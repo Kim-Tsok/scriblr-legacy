@@ -36,6 +36,7 @@ const CreateContent = () => {
         </select>
         <Link
           className="w-[20rem] bg-slate-200 text-center p-4 rounded-lg m-3 text-xl font-semibold"
+          to="/create/books"
           onClick={handleClick}
         >
           Continue
