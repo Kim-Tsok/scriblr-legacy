@@ -53,9 +53,6 @@ const Discover = () => {
         <h1 className="m-4 text-center font-bold font-mono text-3xl text-blue-800 bg-white mb-5 mt-[5rem]">
           All Books
         </h1>
-        <div className="w-screen flex items-center justify-center overflow-hidden relative bg-white">
-          <ContentForm />
-        </div>
         <div className="flex flex-wrap justify-center items-center bg-white">
           {contents &&
             contents.map((content) => (
