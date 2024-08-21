@@ -29,9 +29,9 @@ const CreateContent = () => {
                   <option value="" disabled>
                     Select an option
                   </option>
-                  <option value="book">Book</option>
-                  <option value="article">Article</option>
-                  <option value="poem">Poem</option>
+                  <option value="books">Book</option>
+                  <option value="articles">Article</option>
+                  <option value="poems">Poem</option>
                 </select>
               </div>
             </div>
@@ -39,7 +39,7 @@ const CreateContent = () => {
             <div>
               <Link
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900"
-                to="/create/books"
+                to={`/create/${contentType}`}
               >
                 Continue
               </Link>

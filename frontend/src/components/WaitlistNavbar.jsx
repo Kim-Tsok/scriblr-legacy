@@ -3,7 +3,7 @@ import logo from "/logo.svg";
 
 const WaitlistNavbar = () => {
   return (
-    <div className="w-screen h-[4rem] p-3 flex items-center justify-between text-white dark:text-black px-9 max-sm:px-5">
+    <div className="w-screen h-[4rem] p-3 flex items-center justify-between text-white dark:text-black px-9 max-sm:px-5 font-mono">
       <div className="flex items-center">
         <img src={logo} alt="logo" className="w-5 h-5 mx-1" />
         <h1 className="font-bold text-xl">Scriblr</h1>

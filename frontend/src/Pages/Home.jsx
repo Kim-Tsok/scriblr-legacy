@@ -34,7 +34,6 @@ const home = () => {
           <div>Error: {error.message}</div>
         ) : (
           <>
-            <WaitlistNavbar />
             <Landing />
           </>
         )}
