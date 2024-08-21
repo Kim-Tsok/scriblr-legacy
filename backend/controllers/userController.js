@@ -42,6 +42,7 @@ const signupUser = async (req, res) => {
 
     res.status(201).json({
       firstName: user.firstName,
+      lastName: user.lastName,
       username: user.username,
       email: user.email,
       avatarLink: user.avatarLink,

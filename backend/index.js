@@ -41,7 +41,6 @@ app.use(json({ limit: "50mb" }));
 app.use(urlencoded({ limit: "50mb", extended: false }));
 // Logging middleware
 app.use((req, res, next) => {
-  console.log(req.path, req.method);
   next();
 });
 

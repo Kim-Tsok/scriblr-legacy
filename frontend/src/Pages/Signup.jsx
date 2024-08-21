@@ -12,13 +12,12 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const { signup, error, isLoading } = useSignup();
   const navigate = useNavigate();
-  const avatar = "";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      AssignAvatar(avatar);
+      let avatar = AssignAvatar();
       await signup(firstName, lastName, username, email, password, avatar);
       navigate("/discover");
     } catch (error) {

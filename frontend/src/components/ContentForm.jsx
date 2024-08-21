@@ -8,6 +8,7 @@ import "react-quill/dist/quill.snow.css";
 import coverPreview from "/cover preview.png";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import Tiptap from "./tiptap.jsx";
 
 const ContentForm = () => {
   const [value, setValue] = useState("");
@@ -82,7 +83,7 @@ const ContentForm = () => {
           title,
           about,
           cover: cover,
-          author: user?.username,
+          author: user?.firstName,
           content: value,
         })
       ).unwrap();
@@ -109,6 +110,7 @@ const ContentForm = () => {
   const handleBack = (e) => {
     e.preventDefault();
     document.getElementById("main").style.display = "none";
+    document.getElementById("firstForm").style.display = "flex";
   };
 
   return (
@@ -251,6 +253,9 @@ const ContentForm = () => {
               onChange={setValue}
               className=" flex items-center justify-center flex-col border-none"
             />
+            {/* <div className="w-[80%] h-[90%] border-2 border-gray-600 m-4 p-4">
+              <Tiptap />
+            </div> */}
           </div>
         </form>
       </div>
