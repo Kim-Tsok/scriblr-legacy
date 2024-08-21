@@ -41,6 +41,9 @@ const BookDetails = () => {
             >
               Read Book
             </Link>
+            <p className="text-sm text-gray-500 mt-2 text-center">
+              *Read book doesn't work yet
+            </p>
             <Link
               to="/discover"
               onClick={handleClick}
@@ -48,6 +51,9 @@ const BookDetails = () => {
             >
               Delete
             </Link>
+            <p className="text-sm text-gray-500 mt-2 text-center">
+              *Please don't delete <br /> for testing only - Kim Only
+            </p>
           </div>
           <div className="px-4 w-[50%] max-md:w-[95%]">
             <div className="mb-2">
