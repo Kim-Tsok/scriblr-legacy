@@ -109,7 +109,7 @@ const ContentForm = () => {
     <>
       <div className="w-screen h-screen flex items-center justify-center">
         <div className="w-[40%] flex items-center justify-center flex-col max-md:w-screen">
-          <div className="w-[30vw]">
+          <div className="w-[30vw] max-md:w-screen">
             <h1 className="text-blue-800 text-3xl font-bold m-6 text-center">
               Let's Create
             </h1>
