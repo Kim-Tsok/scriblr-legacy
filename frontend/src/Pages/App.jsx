@@ -36,6 +36,10 @@ function Layout() {
     if (location.pathname.startsWith("/login")) {
       return EmptyNav;
     }
+
+    if (location.pathname.startsWith("/create")) {
+      return EmptyNav;
+    }
     return Navbar;
   };
 

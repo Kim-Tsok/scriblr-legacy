@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const CreateContent = () => {
-  const [contentType, setContentType] = useState("book");
+  const [contentType, setContentType] = useState("books");
 
   return (
     <>
@@ -43,6 +43,15 @@ const CreateContent = () => {
               >
                 Continue
               </Link>
+              <div className="flex w-full justify-start pt-1">
+                <Link
+                  className="mt-1 "
+                  to="/discover
+                "
+                >
+                  {"< Back"}
+                </Link>
+              </div>
             </div>
           </form>
         </div>
