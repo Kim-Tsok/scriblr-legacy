@@ -5,6 +5,7 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
+import "../components/Create Menu/Books/styles.scss";
 import Navbar from "../components/Navbar";
 import WaitlistNavbar from "../components/WaitlistNavbar";
 import Home from "./Home";
@@ -15,7 +16,7 @@ import Signup from "./Signup";
 import Login from "./Login";
 import TermsOfService from "./Legal/TermsOfService";
 import NotFound from "./NotFound";
-import ContentForm from "../components/ContentForm";
+import BookForm from "../components/Create Menu/Books/BookForm";
 import ArticlesPage from "../components/ArticlesPage";
 import CreateContent from "../components/CreateContent";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -75,7 +76,7 @@ function Layout() {
           <Route path="/discover/books/d/:id" element={<BookDetails />} />
           <Route path="/termsofservice" element={<TermsOfService />} />
           <Route path="/create" element={<CreateContent />} />
-          <Route path="/create/books" element={<ContentForm />} />
+          <Route path="/create/books" element={<BookForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

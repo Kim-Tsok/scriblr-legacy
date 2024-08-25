@@ -1,43 +1,90 @@
-// src/Tiptap.tsx
 import {
-  useEditor,
+  BubbleMenu,
   EditorContent,
   FloatingMenu,
-  BubbleMenu,
+  useEditor,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { Editor } from "@tiptap/core";
-import Document from "@tiptap/extension-document";
-import Paragraph from "@tiptap/extension-paragraph";
-import Text from "@tiptap/extension-text";
-import Heading from "@tiptap/extension-heading";
+import React from "react";
 
-// define your extension array
-const extensions = [
-  StarterKit,
-  Document,
-  Paragraph,
-  Text,
-  Heading.configure({
-    levels: [1, 2, 3],
-  }),
-];
-
-const content = "<p>Hello World!</p>";
-
-const Tiptap = () => {
+export default () => {
   const editor = useEditor({
-    extensions,
-    content,
+    extensions: [StarterKit],
+    content: `
+      <p>
+        Try to select <em>this text</em> to see what we call the bubble menu.
+      </p>
+      <p>
+        Neat, isn’t it? Add an empty paragraph to see the floating menu.
+      </p>
+    `,
   });
 
   return (
     <>
+      {editor && (
+        <BubbleMenu
+          className="bubble-menu"
+          tippyOptions={{ duration: 100 }}
+          editor={editor}
+        >
+          <button
+            onClick={() => editor.chain().focus().toggleBold().run()}
+            className={editor.isActive("bold") ? "is-active" : ""}
+          >
+            Bold
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleItalic().run()}
+            className={editor.isActive("italic") ? "is-active" : ""}
+          >
+            Italic
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleStrike().run()}
+            className={editor.isActive("strike") ? "is-active" : ""}
+          >
+            Strike
+          </button>
+        </BubbleMenu>
+      )}
+
+      {editor && (
+        <FloatingMenu
+          className="floating-menu"
+          tippyOptions={{ duration: 100 }}
+          editor={editor}
+        >
+          <button
+            onClick={() =>
+              editor.chain().focus().toggleHeading({ level: 1 }).run()
+            }
+            className={
+              editor.isActive("heading", { level: 1 }) ? "is-active" : ""
+            }
+          >
+            H1
+          </button>
+          <button
+            onClick={() =>
+              editor.chain().focus().toggleHeading({ level: 2 }).run()
+            }
+            className={
+              editor.isActive("heading", { level: 2 }) ? "is-active" : ""
+            }
+          >
+            H2
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleBulletList().run()}
+            className={editor.isActive("bulletList") ? "is-active" : ""}
+          >
+            Bullet list
+          </button>
+        </FloatingMenu>
+      )}
+
       <EditorContent editor={editor} />
-      <FloatingMenu editor={editor}>This is the floating menu</FloatingMenu>
-      <BubbleMenu editor={editor}>This is the bubble menu</BubbleMenu>
     </>
   );
 };
-
-export default Tiptap;
