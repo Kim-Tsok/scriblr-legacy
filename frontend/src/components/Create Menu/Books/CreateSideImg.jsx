@@ -5,7 +5,7 @@ import img from "/img for create.png";
 const CreateSideImg = () => {
   return (
     <>
-      <div className="w-[60%] h-[95%] flex max-md:hidden">
+      <div className="w-[57%] h-[95%] flex items-center justify-center max-[979px]:hidden">
         <img
           src={sideImg}
           className="object-contain w-full h-full max-[1360px]:hidden"
@@ -13,10 +13,6 @@ const CreateSideImg = () => {
         <img
           src={sideImgRes}
           className="object-contain h-full w-full hidden max-[1360px]:block max-[979px]:hidden"
-        />
-        <img
-          src={img}
-          className="object-contain h-full w-full hidden max-[979px]:block "
         />
       </div>
     </>

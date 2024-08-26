@@ -19,6 +19,7 @@ const WriteBook = ({ title, value, setValue }) => {
         className="flex w-screen items-center justify-between"
         id="topofquill"
       >
+        <h1 className="ml-5 text-3xl font-bold">{title}</h1>
         <div className="flex items-end justify-end px-5">
           <button
             onClick={handleBack}

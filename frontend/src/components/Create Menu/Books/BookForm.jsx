@@ -1,14 +1,10 @@
 import { useState } from "react";
 import { useAuthContext } from "../../../hooks/useAuthContext.jsx";
-import { useContentsContext } from "../../../hooks/useContentContext.jsx";
 
 import { useDispatch, useSelector } from "react-redux";
 import { booksCreate } from "../../../slices/bookSlice.js";
 import "react-quill/dist/quill.snow.css";
-import coverPreview from "/cover preview.png";
-import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import Tiptap from "../../tiptap.jsx";
 
 import InfoForm from "./InfoForm.jsx";
 import WriteBook from "./WriteBook.jsx";
@@ -78,12 +74,11 @@ const BookForm = () => {
     <>
       <form
         className="w-screen h-screen flex items-center justify-center"
-        name=""
+        name="Create Book"
         onSubmit={handleSubmit}
       >
-        <div id="Book_First" className="flex">
+        <div id="Book_First" className="flex items-center">
           <InfoForm title={title} setTitle={setTitle} />
-
           <CreateSideImg />
         </div>
         <div

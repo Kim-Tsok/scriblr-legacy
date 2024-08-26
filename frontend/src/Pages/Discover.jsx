@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useContentsContext } from "../hooks/useContentContext";
 import Book from "../components/Book";
-import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
+import CreateBtnMobile from "../components/CreateBtnMobile";
 
 const Discover = () => {
   const [isLoading, setIsLoading] = useState("");
@@ -58,14 +58,7 @@ const Discover = () => {
               <Book key={content._id} content={content} cover={content.cover} />
             ))}
         </div>
-        <div className="w-screen fixed h-10 bottom-0 flex items-center justify-center">
-          <Link
-            to="/create"
-            className="rounded-full fixed  bottom-0 m-7 text-lg p-2 px-3 bg-blue-800 text-white  font-mono md:hidden"
-          >
-            Create
-          </Link>
-        </div>
+        <CreateBtnMobile />
       </div>
     </>
   );

@@ -35,53 +35,59 @@ const InfoForm = ({ title, setTitle }) => {
   };
   return (
     <>
-      <div id="BookInfoForm">
+      <div
+        id="BookInfoForm"
+        className="w-[40%] flex items-center justify-center flex-col max-[979px]:w-screen"
+      >
         <h1 className="text-blue-800 text-3xl font-bold m-6 text-center max-md:my-8">
-          Let's Create
+          Let's Create a book
         </h1>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="bg-white text-3xl font-bold m-2 mt-0 outline-none p-2 h-10"
-        />
-        <textarea
-          name="description"
-          id="description"
-          rows="13"
-          spellCheck
-          required
-          value={about}
-          onChange={(e) => setAbout(e.target.value)}
-          minLength={30}
-          maxLength={1024}
-          placeholder="what is your book about..."
-          className="bg-white w-full resize-none outline-none m-2 p-2"
-        ></textarea>
-        <div className="w-full flex items-center justify-center flex-col my-2">
-          <label className="text-left items-start">Cover:</label>
-          <div className="p-1 rounded-md border-2  border-zinc-500 w-[70%]">
-            <input
-              type="file"
-              accept="image/*"
-              required
-              onChange={handleContentImageUpload}
-              className="w-full h-full z-10 "
-            />
-          </div>
-        </div>
-        <div className="flex flex-col w-full items-center">
-          <button
-            onClick={handleNext}
-            className="group relative w-[90%] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900"
-          >
-            Next
-          </button>
-          <div className="flex w-full justify-start pl-4 pt-1">
-            <Link className="ml-2 mt-1 " to="/create">
-              {"< Back"}
-            </Link>
+        <div className="w-[35vw] mt-4 max-[979px]:w-[90vw]">
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="bg-white text-3xl font-bold m-2 mt-0 outline-none p-2 h-10 max-[979px]:mx-5"
+          />
+          <textarea
+            name="description"
+            id="description"
+            rows="13"
+            spellCheck
+            required
+            value={about}
+            onChange={(e) => setAbout(e.target.value)}
+            minLength={30}
+            maxLength={1024}
+            placeholder="what is your book about..."
+            className="bg-white w-full resize-none outline-none m-2 p-2 max-[979px]:mx-5"
+          ></textarea>
+          {/* <div className="w-full flex items-center justify-center flex-col my-2">
+            <label className="text-left items-start">Cover:</label>
+            <div className="p-1 rounded-md border-2  border-zinc-500 w-[70%]">
+              <input
+                type="file"
+                accept="image/*"
+                required
+                onChange={handleContentImageUpload}
+                className="w-full h-full z-10 "
+              />
+            </div>
+          </div> */}
+
+          <div className="flex flex-col w-full items-center">
+            <button
+              onClick={handleNext}
+              className="group relative w-[90%] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900"
+            >
+              Next
+            </button>
+            <div className="flex w-full justify-start pl-4 pt-1">
+              <Link className="ml-2 mt-1 " to="/create">
+                {"< Back"}
+              </Link>
+            </div>
           </div>
         </div>
       </div>
