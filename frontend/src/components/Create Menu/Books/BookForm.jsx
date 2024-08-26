@@ -12,6 +12,7 @@ import Tiptap from "../../tiptap.jsx";
 
 import InfoForm from "./InfoForm.jsx";
 import WriteBook from "./WriteBook.jsx";
+import CreateSideImg from "./CreateSideImg.jsx";
 
 const BookForm = () => {
   const [title, setTitle] = useState("");
@@ -80,8 +81,10 @@ const BookForm = () => {
         name=""
         onSubmit={handleSubmit}
       >
-        <div id="Book_First">
+        <div id="Book_First" className="flex">
           <InfoForm title={title} setTitle={setTitle} />
+
+          <CreateSideImg />
         </div>
         <div
           className="w-screen h-full fixed flex-col bg-[#F3F3F3] hidden  items-center overflow-x-hidden"
