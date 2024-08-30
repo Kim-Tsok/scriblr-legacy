@@ -6,10 +6,6 @@ const CreateBtnMobile = () => {
   };
   return (
     <>
-      <div
-        className="w-screen fixed h-screen blur-lg bg-black opacity-25 z-[100] hidden max-md:hidden"
-        id="create-overlay"
-      ></div>
       <div className="w-screen fixed h-10 bottom-0 flex items-center justify-center z-50">
         <button
           to="/create"

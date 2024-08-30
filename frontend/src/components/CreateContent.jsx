@@ -1,8 +1,23 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const CreateContent = () => {
-  const [contentType, setContentType] = useState("books");
+  const [contentType, setContentType] = useState("null");
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (contentType == "null") {
+      const err = document.getElementById("CC_Error");
+      err.style.display = "block";
+
+      setTimeout(() => {
+        err.style.display = "none";
+      }, 3000);
+    } else {
+      navigate(`/create/${contentType}`);
+    }
+  };
 
   return (
     <>
@@ -37,12 +52,12 @@ const CreateContent = () => {
             </div>
 
             <div>
-              <Link
+              <button
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900"
-                to={`/create/${contentType}`}
+                onClick={handleClick}
               >
                 Continue
-              </Link>
+              </button>
               <div className="flex w-full justify-start pt-1">
                 <Link
                   className="mt-1 "
@@ -51,6 +66,12 @@ const CreateContent = () => {
                 >
                   {"< Back"}
                 </Link>
+              </div>
+              <div
+                id="CC_Error"
+                className="w-full hidden border border-red-500 bg-red-200 text-red-600 py-3 px-1 rounded-md text-center mt-5"
+              >
+                Please select an option
               </div>
             </div>
           </form>

@@ -21,6 +21,7 @@ import ArticlesPage from "../components/ArticlesPage";
 import CreateContent from "../components/CreateContent";
 import { useAuthContext } from "../hooks/useAuthContext";
 import EmptyNav from "../components/Navbar/EmptyNav";
+import CreateOverlay from "../components/Create Menu/CreateOverlay";
 
 function Layout() {
   const location = useLocation();
@@ -48,6 +49,7 @@ function Layout() {
 
   return (
     <div>
+      <CreateOverlay />
       <NavbarComponent />
       <main>
         <Routes>
