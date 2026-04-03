@@ -24,7 +24,7 @@ const getEmails = async (req, res) => {
   res.status(200).json(emails);
 };
 const createEmail = async (req, res) => {
-  const { email, name } = req.body;
+  const { email, name, role } = req.body;
 
   // Validations
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -39,7 +39,7 @@ const createEmail = async (req, res) => {
     throw Error("Email already joint");
   }
 
-  // Submitting name & email
+  // Submitting name, role & email
   try {
     const waitlist = await Email.create({ email, name, role });
     res.status(200).json(waitlist);
