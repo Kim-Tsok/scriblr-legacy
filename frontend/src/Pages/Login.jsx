@@ -18,11 +18,9 @@ const Login = () => {
   return (
     <>
       <div className="p-2 w-screen h-screen flex items-center justify-center font-mono">
-        <form
-          onSubmit={handleSubmit}
-          className="mt-10 flex flex-col p-4 border-2 border-neutral-600 rounded-md w-[30%] max-lg:w-[50%] max-md:w-[90%]"
-        >
-          <h3 className="text-2xl text-center font-bold text-blue-800 mb-4">
+        <form onSubmit={handleSubmit} className="">
+          <h1>Login</h1>
+          {/* <h3 className="text-2xl text-center font-bold text-blue-800 mb-4">
             Login
           </h3>
           <label>Username:</label>
@@ -53,8 +51,28 @@ const Login = () => {
             <Link to="/signup" className="text-blue-800 underline">
               signup
             </Link>
-          </p>
-          {/* <p className="text-center font-bold my-2">-or-</p>
+          </p> */}
+          {/*  */}
+
+          <div className="w-[40%] h-full">
+            <label>Username:</label>
+            <input
+              type="text"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              placeholder="johndoe01"
+              className="border-2 bg-white border-neutral-600 outline-none rounded-md px-2 p-1 mb-2"
+            />
+            <label>Password:</label>
+            <input
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              placeholder="enter your password"
+              className="border-2 bg-white border-neutral-600 outline-none rounded-md px-2 p-1"
+            />
+          </div>
+
           <button
             type="submit"
             className="p-2 h-[2.5rem] px-3 bg-gradient-to-b from-gray-200 to-neutral-300 text-black  text-center border-2 border-gray-300"
@@ -62,7 +80,7 @@ const Login = () => {
             onClick={handleGoogleSignIn}
           >
             Google
-          </button> */}
+          </button>
           {error && (
             <div className="p-2 border-2 border-red-700 bg-red-200 text-red-600 mt-2">
               {error}
